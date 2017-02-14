@@ -43,7 +43,7 @@
     "hbs": "4.0.1"
   },
   "devDependencies": {
-    "tap": "10.1.0"
+    "tap": "10.1.1"
   },
   "scripts": {
     "test": "tap test/*.js",
