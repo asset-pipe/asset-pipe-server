@@ -36,7 +36,7 @@
     "joi": "10.2.2"
   },
   "devDependencies": {
-    "eslint": "^3.15.0",
+    "eslint": "^3.18.0",
     "eslint-config-finn": "^1.0.1",
     "tap": "10.2.2"
   },
