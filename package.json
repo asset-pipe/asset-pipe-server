@@ -30,7 +30,7 @@
     "bole": "3.0.2",
     "boom": "4.2.0",
     "compression": "1.6.2",
-    "convict": "2.0.0",
+    "convict": "3.0.0",
     "cors": "2.8.1",
     "express": "4.14.1",
     "joi": "10.2.2"
