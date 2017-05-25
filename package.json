@@ -29,7 +29,7 @@
     "asset-pipe-sink-fs": "1.0.0-beta.8",
     "body": "5.1.0",
     "bole": "3.0.2",
-    "boom": "4.3.1",
+    "boom": "5.0.0",
     "compression": "1.6.2",
     "convict": "3.0.0",
     "cors": "2.8.3",
