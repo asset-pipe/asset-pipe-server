@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "eslint": "^3.19.0",
-    "eslint-config-finn": "^1.0.2",
+    "eslint-config-finn": "^2.0.0",
     "tap": "10.7.0"
   },
   "scripts": {
