@@ -33,7 +33,7 @@
     "compression": "1.6.2",
     "convict": "4.0.0",
     "cors": "2.8.3",
-    "express": "4.15.3",
+    "express": "5.0.0-alpha.6",
     "joi": "10.6.0",
     "uuid": "^3.0.1"
   },
