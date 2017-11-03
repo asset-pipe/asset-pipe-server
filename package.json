@@ -32,7 +32,7 @@
     "asset-pipe-js-reader": "^1.0.0-beta.9",
     "body": "^5.1.0",
     "bole": "^3.0.2",
-    "boom": "^6.0.0",
+    "boom": "^7.0.0",
     "compression": "^1.7.1",
     "convict": "^4.0.1",
     "cors": "^2.8.4",
