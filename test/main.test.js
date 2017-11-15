@@ -37,7 +37,7 @@ describe('Router class', () => {
     test('new Router().router property', () => {
         expect.assertions(1);
         const router = new Router();
-        expect(router.router.name).toEqual(express.Router().name); // eslint-disable-line
+    expect(router.router.name).toEqual(express.Router().name); // eslint-disable-line
     });
 });
 
@@ -392,8 +392,7 @@ describe('downloading feeds', () => {
             expect(fileName).toBe(`${file}`);
         });
         const { body } = await get(`/feed/${file}`)
-            .set('Accept', 'application/json')
-            .expect('Content-Type', /json/)
+            .expect('Content-Type', /application\/json/)
             .expect(200);
 
         expect(body).toMatchSnapshot();
@@ -508,8 +507,9 @@ describe('bundling multiple js feeds', () => {
     });
 
     test('/bundle/:file', async () => {
-        expect.assertions(2);
-        const { text } = await get(`/bundle/${fileName}`).expect(200);
+        expect.assertions(3);
+        const { text, headers } = await get(`/bundle/${fileName}`).expect(200);
+        expect(headers['content-type']).toMatch(/application\/javascript/);
         expect(text).toMatchSnapshot();
     });
 
@@ -629,8 +629,9 @@ describe('bundling multiple css feeds', () => {
     });
 
     test('/bundle/:file', async () => {
-        expect.assertions(2);
-        const { text } = await get(`/bundle/${fileName}`).expect(200);
+        expect.assertions(3);
+        const { text, headers } = await get(`/bundle/${fileName}`).expect(200);
+        expect(headers['content-type']).toMatch(/text\/css/);
         expect(text).toMatchSnapshot();
     });
 
