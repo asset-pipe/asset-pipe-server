@@ -39,6 +39,7 @@
     "express": "^4.16.2",
     "ext-name": "^5.0.0",
     "joi": "^13.0.2",
+    "readable-stream": "^2.3.3",
     "uuid": "^3.0.1"
   },
   "devDependencies": {

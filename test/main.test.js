@@ -6,6 +6,7 @@ const SinkFs = require('@asset-pipe/sink-fs');
 const Router = require('../lib/main');
 const supertest = require('supertest');
 const pretty = require('pretty');
+const { PassThrough } = require('readable-stream');
 
 function createTestServerFor(router) {
     const app = express();
@@ -37,7 +38,7 @@ describe('Router class', () => {
     test('new Router().router property', () => {
         expect.assertions(1);
         const router = new Router();
-    expect(router.router.name).toEqual(express.Router().name); // eslint-disable-line
+        expect(router.router.name).toEqual(express.Router().name); // eslint-disable-line new-cap
     });
 });
 
@@ -98,6 +99,40 @@ describe('Router instance methods', () => {
 
         router.getTestFileCallback()(req, res);
         expect(pretty(send.mock.calls[0][0])).toMatchSnapshot();
+    });
+
+    test('fileFoundCallback: detectable mime type', () => {
+        expect.assertions(1);
+        const router = new Router();
+        router.sink.reader = jest.fn(() => {});
+        const req = {
+            method: 'get',
+            path: '/',
+            params: { file: 'bar.js' },
+        };
+        const res = new PassThrough();
+        res.type = jest.fn();
+        const fileStream = new PassThrough();
+        res.locals = {};
+        router.fileFoundCallback(req, res, fileStream);
+        expect(res.type).toHaveBeenCalledWith('application/javascript');
+    });
+
+    test('fileFoundCallback: undetectable mime type', () => {
+        expect.assertions(1);
+        const router = new Router();
+        router.sink.reader = jest.fn(() => {});
+        const req = {
+            method: 'get',
+            path: '/',
+            params: { file: 'bar' },
+        };
+        const res = new PassThrough();
+        res.type = jest.fn();
+        const fileStream = new PassThrough();
+        res.locals = {};
+        router.fileFoundCallback(req, res, fileStream);
+        expect(res.type).toHaveBeenCalledWith(undefined);
     });
 
     test('statusErrors: json', () => {
