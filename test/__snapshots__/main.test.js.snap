@@ -38,8 +38,8 @@ exports[`Router instance methods onPipelineEmpty 1`] = `[Error: Could not load 1
 
 exports[`bundling multiple css feeds /bundle/:file 1`] = `
 Object {
-  "file": "6a8ca51fd7fea7dda6550d49255f36b09835d96a63655f26bf8b009d26bba08f.css",
-  "uri": "/bundle/6a8ca51fd7fea7dda6550d49255f36b09835d96a63655f26bf8b009d26bba08f.css",
+  "file": "865dac877158c1539796859ea0717731af32e4d0d2012cba335aa628bad0454e.css",
+  "uri": "/bundle/865dac877158c1539796859ea0717731af32e4d0d2012cba335aa628bad0454e.css",
 }
 `;
 
@@ -48,15 +48,13 @@ exports[`bundling multiple css feeds /bundle/:file 2`] = `
 h2: { color: green; }
 
 /* my-module-2/main.css */
-h1 { color:blue; }
-
-"
+h1 { color:blue; }"
 `;
 
 exports[`bundling multiple css feeds /bundle/css with multiple invalid bundle reference 1`] = `
 Object {
-  "file": "6a8ca51fd7fea7dda6550d49255f36b09835d96a63655f26bf8b009d26bba08f.css",
-  "uri": "/bundle/6a8ca51fd7fea7dda6550d49255f36b09835d96a63655f26bf8b009d26bba08f.css",
+  "file": "865dac877158c1539796859ea0717731af32e4d0d2012cba335aa628bad0454e.css",
+  "uri": "/bundle/865dac877158c1539796859ea0717731af32e4d0d2012cba335aa628bad0454e.css",
 }
 `;
 
@@ -103,8 +101,8 @@ Object {
 
 exports[`bundling single css feed /bundle/css 1`] = `
 Object {
-  "file": "a315716fc0894214caab02b0ded4ea4644806cf6d2dd1706ad22d3e97d6e70ba.css",
-  "uri": "/bundle/a315716fc0894214caab02b0ded4ea4644806cf6d2dd1706ad22d3e97d6e70ba.css",
+  "file": "28b015efa819a445a46282fff9125aac41deed83d81d5f19a994a322f30cbbfb.css",
+  "uri": "/bundle/28b015efa819a445a46282fff9125aac41deed83d81d5f19a994a322f30cbbfb.css",
 }
 `;
 

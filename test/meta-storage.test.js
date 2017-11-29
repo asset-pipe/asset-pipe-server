@@ -25,7 +25,7 @@ test('get() - should reject if missing entry', async () => {
     try {
         await storage.get('key');
     } catch (e) {
-        expect(e).toEqual(new Error('No file with /meta/key.json'));
+        expect(e).toEqual(new Error('No file with name "/meta/key.json"'));
     }
 });
 
@@ -53,7 +53,7 @@ test('get() - should error if no payload', async () => {
     try {
         await storage.get('key');
     } catch (e) {
-        expect(e).toEqual(new Error('No file with /meta/key.json'));
+        expect(e).toEqual(new Error('No file with name "/meta/key.json"'));
     }
 });
 
