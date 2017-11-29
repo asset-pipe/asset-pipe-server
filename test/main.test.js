@@ -488,7 +488,7 @@ describe('bundling single js feed', () => {
         supertest(server)
             .post('/bundle/js')
             .send(['completelyfake.json'])
-            .expect(404));
+            .expect(409));
 
     afterEach(() => server.close());
 });
@@ -555,7 +555,7 @@ describe('bundling multiple js feeds', () => {
         supertest(server)
             .post('/bundle/js')
             .send(['completelyfake.json', 'alsocompletelyfake.json'])
-            .expect(404));
+            .expect(409));
 
     afterEach(() => server.close());
 });
@@ -610,7 +610,7 @@ describe('bundling single css feed', () => {
         supertest(server)
             .post('/bundle/css')
             .send(['completelyfake.json'])
-            .expect(404));
+            .expect(409));
 
     afterEach(() => server.close());
 });
@@ -677,7 +677,7 @@ describe('bundling multiple css feeds', () => {
         supertest(server)
             .post('/bundle/css')
             .send(['completelyfake.json', 'alsocompletelyfake.json'])
-            .expect(404));
+            .expect(409));
 
     afterEach(() => server.close());
 });
