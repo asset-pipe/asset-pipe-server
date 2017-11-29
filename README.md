@@ -21,7 +21,7 @@
 
 ### Install
 ```bash
-npm install asset-pipe-build-server
+npm install @asset-pipe/build-server
 ```
 
 ### Configure
