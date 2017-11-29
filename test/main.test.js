@@ -517,7 +517,7 @@ describe('bundling multiple js feeds', () => {
     ];
 
     beforeEach(async () => {
-        expect.assertions(1);
+        expect.assertions(2);
         const router = new Router();
         let post;
         ({ server } = await createTestServerFor(router.router()));
@@ -536,13 +536,16 @@ describe('bundling multiple js feeds', () => {
             .send(responses.map(({ body: { file } }) => file))
             .expect(200);
 
+        const { text } = await get(`/bundle/${body.file}`).expect(200);
+        expect(text).toMatchSnapshot();
+
         fileName = body.file;
         body.uri = body.uri.replace(/http:\/\/[0-9.:]+/, '');
         expect(body).toMatchSnapshot();
     });
 
     test('/bundle/:file', async () => {
-        expect.assertions(3);
+        expect.assertions(4);
         const { text, headers } = await get(`/bundle/${fileName}`).expect(200);
         expect(headers['content-type']).toMatch(/application\/javascript/);
         expect(text).toMatchSnapshot();

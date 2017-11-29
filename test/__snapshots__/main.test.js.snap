@@ -61,13 +61,22 @@ Object {
 `;
 
 exports[`bundling multiple js feeds /bundle/:file 1`] = `
+"(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require==\\"function\\"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error(\\"Cannot find module '\\"+o+\\"'\\");throw f.code=\\"MODULE_NOT_FOUND\\",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require==\\"function\\"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({\\"c645cf572a8f5acf8716e4846b408d3b1ca45c58\\":[function(require,module,exports){
+\\"use strict\\";module.exports.hello=function(){return\\"hello\\"};
+},{}],\\"d645cf572a8f5srf8716e4846b408d3b1ca45c23\\":[function(require,module,exports){
+\\"use strict\\";module.exports.world=function(){return\\"world\\"};
+},{}]},{},[]);
+"
+`;
+
+exports[`bundling multiple js feeds /bundle/:file 2`] = `
 Object {
   "file": "1cd8a3c4418251f677b6cafb19e767feabd9a795ef3c42d459e3d0f978e30ce0.js",
   "uri": "/bundle/1cd8a3c4418251f677b6cafb19e767feabd9a795ef3c42d459e3d0f978e30ce0.js",
 }
 `;
 
-exports[`bundling multiple js feeds /bundle/:file 2`] = `
+exports[`bundling multiple js feeds /bundle/:file 3`] = `
 "(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require==\\"function\\"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error(\\"Cannot find module '\\"+o+\\"'\\");throw f.code=\\"MODULE_NOT_FOUND\\",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require==\\"function\\"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({\\"c645cf572a8f5acf8716e4846b408d3b1ca45c58\\":[function(require,module,exports){
 \\"use strict\\";module.exports.hello=function(){return\\"hello\\"};
 },{}],\\"d645cf572a8f5srf8716e4846b408d3b1ca45c23\\":[function(require,module,exports){
@@ -77,6 +86,15 @@ exports[`bundling multiple js feeds /bundle/:file 2`] = `
 `;
 
 exports[`bundling multiple js feeds /bundle/js with multiple invalid bundle reference 1`] = `
+"(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require==\\"function\\"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error(\\"Cannot find module '\\"+o+\\"'\\");throw f.code=\\"MODULE_NOT_FOUND\\",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require==\\"function\\"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({\\"c645cf572a8f5acf8716e4846b408d3b1ca45c58\\":[function(require,module,exports){
+\\"use strict\\";module.exports.hello=function(){return\\"hello\\"};
+},{}],\\"d645cf572a8f5srf8716e4846b408d3b1ca45c23\\":[function(require,module,exports){
+\\"use strict\\";module.exports.world=function(){return\\"world\\"};
+},{}]},{},[]);
+"
+`;
+
+exports[`bundling multiple js feeds /bundle/js with multiple invalid bundle reference 2`] = `
 Object {
   "file": "1cd8a3c4418251f677b6cafb19e767feabd9a795ef3c42d459e3d0f978e30ce0.js",
   "uri": "/bundle/1cd8a3c4418251f677b6cafb19e767feabd9a795ef3c42d459e3d0f978e30ce0.js",
