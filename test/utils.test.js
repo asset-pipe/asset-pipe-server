@@ -85,3 +85,54 @@ test('fetchFeeds() handles non missing file errors as 500s', async () => {
         expect(err.output.statusCode).toBe(500);
     }
 });
+
+test('fetchFeeds() retries on non file not found failures', async () => {
+    expect.hasAssertions();
+    const { fetchFeeds } = require('../lib/utils');
+    let count = 0;
+    const sinkStub = {
+        async get() {
+            if (count++ > 1) {
+                return 'feed content';
+            }
+            throw new Error();
+        },
+    };
+
+    await expect(
+        fetchFeeds(sinkStub, ['sfd123ds123fds12.json'], 3)
+    ).resolves.toEqual(['feed content']);
+});
+
+test('fetchFeeds() aborts retries on file not found failures', async () => {
+    expect.hasAssertions();
+    const { fetchFeeds } = require('../lib/utils');
+    const sinkStub = {
+        get: jest.fn(() => Promise.reject(new Error('No file with name'))),
+    };
+
+    try {
+        await fetchFeeds(sinkStub, ['sfd123ds123fds12.json'], 3);
+    } catch (err) {
+        const spyCount = sinkStub.get.mock.calls[0].length;
+        expect(spyCount).toBe(1);
+    }
+});
+
+test('upload() retries on failures', async () => {
+    expect.hasAssertions();
+    const { upload } = require('../lib/utils');
+    let count = 0;
+    const sinkStub = {
+        async set() {
+            if (count++ > 1) {
+                return 'upload success';
+            }
+            throw new Error();
+        },
+    };
+
+    await expect(() =>
+        upload(sinkStub, 'filename.js', 'file content', 3)
+    ).not.toThrow();
+});

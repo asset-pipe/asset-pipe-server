@@ -39,6 +39,7 @@
     "express": "^4.16.2",
     "joi": "^13.0.2",
     "mime-types": "^2.1.17",
+    "p-retry": "^1.0.0",
     "readable-stream": "^2.3.3",
     "uuid": "^3.0.1"
   },
