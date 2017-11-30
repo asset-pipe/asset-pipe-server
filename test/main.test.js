@@ -433,7 +433,10 @@ describe('downloading feeds', () => {
         expect(body).toMatchSnapshot();
     });
 
-    test('/feed/:file', () => get(`/feed/doesnotexist`).expect(400));
+    test('/feed/invalid-path', () => get(`/feed/invalid-path`).expect(400));
+
+    test('/feed/does-not-exist.json', () =>
+        get(`/feed/does-not-exist.json`).expect(404));
 
     afterEach(() => server.close());
 });
@@ -441,6 +444,7 @@ describe('downloading feeds', () => {
 describe('bundling single js feed', () => {
     let server;
     let bundles;
+    let router;
     const singleFeed = [
         {
             id: 'c645cf572a8f5acf8716e4846b408d3b1ca45c58',
@@ -452,7 +456,7 @@ describe('bundling single js feed', () => {
     ];
 
     beforeEach(async () => {
-        const router = new Router();
+        router = new Router();
         ({ server } = await createTestServerFor(router.router()));
 
         const { body } = await supertest(server)
@@ -489,6 +493,28 @@ describe('bundling single js feed', () => {
             .post('/bundle/js')
             .send(['completelyfake.json'])
             .expect(409));
+
+    test('invalid json response should error correctly', async () => {
+        // Missing closing `}`
+        router.sink.set('invalid.json', Buffer.from('{ "foo": "bar"'));
+
+        const eventPromise = new Promise(resolve => {
+            router.once('request error', async (_, __, ___, ____, error) =>
+                resolve(error)
+            );
+        });
+
+        const [errorEvent] = await Promise.all([
+            eventPromise,
+            supertest(server)
+                .post('/bundle/js')
+                .send(['invalid.json'])
+                .expect(500),
+        ]);
+
+        expect(errorEvent.message).toBe('Unexpected end of JSON input');
+        expect(errorEvent.isBoom).toBe(true);
+    });
 
     afterEach(() => server.close());
 });
