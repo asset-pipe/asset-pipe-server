@@ -101,7 +101,9 @@ test('fetchFeeds() retries on non file not found failures', async () => {
 
     await expect(
         fetchFeeds(sinkStub, ['sfd123ds123fds12.json'], 3)
-    ).resolves.toEqual(['feed content']);
+    ).resolves.toEqual([
+        { contents: 'feed content', fileName: 'sfd123ds123fds12.json' },
+    ]);
 });
 
 test('fetchFeeds() aborts retries on file not found failures', async () => {
