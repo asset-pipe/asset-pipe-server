@@ -492,7 +492,7 @@ describe('bundling single js feed', () => {
         supertest(server)
             .post('/bundle/js')
             .send(['completelyfake.json'])
-            .expect(409));
+            .expect(404));
 
     test('invalid json response should error correctly', async () => {
         // Missing closing `}`
@@ -512,7 +512,9 @@ describe('bundling single js feed', () => {
                 .expect(500),
         ]);
 
-        expect(errorEvent.message).toBe('Unexpected end of JSON input');
+        expect(errorEvent.message).toBe(
+            'Unable to parse 1 or more feeds as JSON.: Unexpected end of JSON input'
+        );
         expect(errorEvent.isBoom).toBe(true);
     });
 
@@ -581,7 +583,7 @@ describe('bundling multiple js feeds', () => {
         supertest(server)
             .post('/bundle/js')
             .send(['completelyfake.json', 'alsocompletelyfake.json'])
-            .expect(409));
+            .expect(404));
 
     afterEach(() => server.close());
 });
@@ -636,7 +638,7 @@ describe('bundling single css feed', () => {
         supertest(server)
             .post('/bundle/css')
             .send(['completelyfake.json'])
-            .expect(409));
+            .expect(404));
 
     afterEach(() => server.close());
 });
@@ -703,7 +705,7 @@ describe('bundling multiple css feeds', () => {
         supertest(server)
             .post('/bundle/css')
             .send(['completelyfake.json', 'alsocompletelyfake.json'])
-            .expect(409));
+            .expect(404));
 
     afterEach(() => server.close());
 });
