@@ -30,6 +30,7 @@
     "@asset-pipe/js-reader": "^1.0.0",
     "@asset-pipe/sink-fs": "^1.1.0",
     "@asset-pipe/sink-mem": "^1.1.1",
+    "asset-pipe-common": "^1.0.0-beta.6",
     "body": "^5.1.0",
     "bole": "^3.0.2",
     "boom": "^7.0.0",
