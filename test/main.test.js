@@ -701,7 +701,7 @@ describe('bundling multiple css feeds', () => {
         expect(text).toMatchSnapshot();
     });
 
-    test('/bundle/css with multiple invalid bundle reference', () =>
+    test('/bundle/css with multiple invalid bundle references', () =>
         supertest(server)
             .post('/bundle/css')
             .send(['completelyfake.json', 'alsocompletelyfake.json'])

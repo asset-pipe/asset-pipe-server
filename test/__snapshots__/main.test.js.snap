@@ -51,7 +51,7 @@ h2: { color: green; }
 h1 { color:blue; }"
 `;
 
-exports[`bundling multiple css feeds /bundle/css with multiple invalid bundle reference 1`] = `
+exports[`bundling multiple css feeds /bundle/css with multiple invalid bundle references 1`] = `
 Object {
   "file": "865dac877158c1539796859ea0717731af32e4d0d2012cba335aa628bad0454e.css",
   "uri": "/bundle/865dac877158c1539796859ea0717731af32e4d0d2012cba335aa628bad0454e.css",
