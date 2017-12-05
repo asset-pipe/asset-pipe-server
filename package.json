@@ -29,7 +29,6 @@
     "@asset-pipe/css-reader": "^1.1.0",
     "@asset-pipe/js-reader": "^1.0.0",
     "@asset-pipe/sink-fs": "^1.1.1",
-    "@asset-pipe/sink-gcs": "^1.1.6",
     "@asset-pipe/sink-mem": "^1.1.2",
     "asset-pipe-common": "^1.0.0-beta.6",
     "body": "^5.1.0",
