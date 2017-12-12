@@ -302,6 +302,13 @@ describe('Router instance methods', () => {
 
         expect(uri).toBe('http://foo/bar/');
     });
+
+    test('cleanup', () => {
+        const router = new Router();
+
+        // Actually invoking it messes up all other tests...
+        expect(router.cleanup).toBeInstanceOf(Function);
+    });
 });
 
 describe('uploading js feeds', () => {
