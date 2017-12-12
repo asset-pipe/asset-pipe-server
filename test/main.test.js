@@ -7,6 +7,7 @@ const Router = require('../lib/main');
 const supertest = require('supertest');
 const pretty = require('pretty');
 const { PassThrough } = require('readable-stream');
+const { endWorkers } = require('../lib/utils');
 
 function createTestServerFor(router) {
     const app = express();
@@ -20,6 +21,8 @@ function createTestServerFor(router) {
         });
     });
 }
+
+afterAll(() => endWorkers());
 
 describe('Router class', () => {
     test('new Router() with no arguments', () => {

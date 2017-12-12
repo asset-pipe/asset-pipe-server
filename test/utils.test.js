@@ -7,7 +7,7 @@ test('bundleFeeds() throws error when bundling JS', async () => {
     jest.doMock('@asset-pipe/js-reader', () => () =>
         Promise.reject(new Error())
     );
-    const { bundleFeeds } = require('../lib/utils');
+    const { bundleFeeds, endWorkers } = require('../lib/utils');
 
     try {
         await bundleFeeds(
@@ -16,6 +16,8 @@ test('bundleFeeds() throws error when bundling JS', async () => {
         );
     } catch (err) {
         expect(err.message).toMatch(/Unable to bundle feeds as JS/);
+    } finally {
+        endWorkers();
     }
 });
 
@@ -24,7 +26,7 @@ test('bundleFeeds() throws error when bundling CSS', async () => {
     jest.doMock('@asset-pipe/css-reader', () => () =>
         Promise.reject(new Error())
     );
-    const { bundleFeeds } = require('../lib/utils');
+    const { bundleFeeds, endWorkers } = require('../lib/utils');
 
     try {
         await bundleFeeds(
@@ -33,12 +35,14 @@ test('bundleFeeds() throws error when bundling CSS', async () => {
         );
     } catch (err) {
         expect(err.message).toMatch(/Unable to bundle feeds as CSS/);
+    } finally {
+        endWorkers();
     }
 });
 
 test('upload() handles errors correctly', async () => {
     expect.hasAssertions();
-    const { upload } = require('../lib/utils');
+    const { upload, endWorkers } = require('../lib/utils');
     const sinkStub = {
         async set() {
             throw new Error('Upload failed');
@@ -51,5 +55,7 @@ test('upload() handles errors correctly', async () => {
         expect(err.message).toMatch(
             /Unable to upload file with name "filename.js"/
         );
+    } finally {
+        endWorkers();
     }
 });
