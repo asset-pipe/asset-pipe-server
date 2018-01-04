@@ -53,6 +53,9 @@ describe('Router instance methods', () => {
         const req = {
             method: 'POST',
             path: '/feed',
+            params: {
+                type: 'js',
+            },
         };
         const res = {
             json,
@@ -716,6 +719,22 @@ describe('bundling multiple css feeds', () => {
             .post('/bundle/css')
             .send(['completelyfake.json', 'alsocompletelyfake.json'])
             .expect(404));
+
+    afterEach(() => server.close());
+});
+
+describe('unknown asset types', () => {
+    let server;
+    let post;
+
+    beforeEach(async () => {
+        const router = new Router();
+        ({ server } = await createTestServerFor(router.router()));
+
+        ({ post } = supertest(server)); // eslint-disable-line prefer-const
+    });
+
+    test('unknown filetype gives 404', () => post('/bundle/png').expect(404));
 
     afterEach(() => server.close());
 });
