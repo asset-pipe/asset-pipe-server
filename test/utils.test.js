@@ -4,9 +4,6 @@ beforeEach(() => jest.resetModules());
 
 test('bundleFeeds() throws error when bundling JS', async () => {
     expect.hasAssertions();
-    jest.doMock('@asset-pipe/js-reader', () => () =>
-        Promise.reject(new Error())
-    );
     const { bundleFeeds, endWorkers } = require('../lib/utils');
 
     try {
@@ -23,9 +20,6 @@ test('bundleFeeds() throws error when bundling JS', async () => {
 
 test('bundleFeeds() throws error when bundling CSS', async () => {
     expect.hasAssertions();
-    jest.doMock('@asset-pipe/css-reader', () => () =>
-        Promise.reject(new Error())
-    );
     const { bundleFeeds, endWorkers } = require('../lib/utils');
 
     try {
