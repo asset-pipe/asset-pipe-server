@@ -461,6 +461,7 @@ describe('bundling single js feed', () => {
     const singleFeed = [
         {
             id: 'c645cf572a8f5acf8716e4846b408d3b1ca45c58',
+            entry: true,
             source:
                 '"use strict";module.exports.world=function(){return"world"};',
             deps: {},
@@ -541,6 +542,7 @@ describe('bundling multiple js feeds', () => {
     const feed1 = [
         {
             id: 'c645cf572a8f5acf8716e4846b408d3b1ca45c58',
+            entry: true,
             source:
                 '"use strict";module.exports.hello=function(){return"hello"};',
             deps: {},
@@ -550,6 +552,7 @@ describe('bundling multiple js feeds', () => {
     const feed2 = [
         {
             id: 'd645cf572a8f5srf8716e4846b408d3b1ca45c23',
+            entry: true,
             source:
                 '"use strict";module.exports.world=function(){return"world"};',
             deps: {},
