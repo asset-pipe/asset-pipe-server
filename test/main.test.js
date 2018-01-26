@@ -9,6 +9,22 @@ const pretty = require('pretty');
 const { PassThrough } = require('readable-stream');
 const { endWorkers } = require('../lib/utils');
 
+const mockMetaStorageSet = jest.fn().mockName('metaStorageSet');
+
+jest.mock(
+    '../lib/meta-storage',
+    () =>
+        class FakeMetaStorage {
+            async set(id, ...rest) {
+                if (id.endsWith('boom')) {
+                    throw new Error('Boom');
+                }
+
+                return mockMetaStorageSet(id, ...rest);
+            }
+        }
+);
+
 function createTestServerFor(router) {
     const app = express();
     app.use(router);
@@ -335,12 +351,12 @@ describe('uploading js feeds', () => {
         post = supertest(server).post;
     });
 
-    test('/feed/js: empty array', async () =>
+    test('/feed/js: empty array', () =>
         post('/feed/js')
             .send([])
             .expect(400));
 
-    test('/feed/js: empty string', async () =>
+    test('/feed/js: empty string', () =>
         post('/feed/js')
             .send('')
             .expect(400));
@@ -359,6 +375,21 @@ describe('uploading js feeds', () => {
             uri: `http://127.0.0.1:${port}/feed/f652e904f72daa8bd884df867b69861bcb90be9508a1d558f05070d5d044d0d3.json`,
         });
     });
+
+    test('/feed/js/myId', async () => {
+        await supertest(server)
+            .post('/feed/js/myId')
+            .send(singleFeed)
+            .expect(200);
+
+        expect(mockMetaStorageSet).toMatchSnapshot();
+    });
+
+    test('/feed/js/myId fails meta storage', () =>
+        supertest(server)
+            .post('/feed/js/boom')
+            .send(singleFeed)
+            .expect(500));
 
     afterEach(() => server.close());
 });
@@ -382,23 +413,32 @@ describe('uploading css feeds', () => {
         ({ server } = await createTestServerFor(router.router()));
     });
 
-    test('/feed/css: empty array', async () =>
+    test('/feed/css: empty array', () =>
         supertest(server)
             .post('/feed/css')
             .send([])
             .expect(400));
 
-    test('/feed/css: empty string', async () =>
+    test('/feed/css: empty string', () =>
         supertest(server)
             .post('/feed/css')
             .send('')
             .expect(400));
 
-    test('/feed/css', async () =>
+    test('/feed/css', () =>
         supertest(server)
             .post('/feed/css')
             .send(singleFeed)
             .expect(200));
+
+    test('/feed/css/myId', async () => {
+        await supertest(server)
+            .post('/feed/css/myId')
+            .send(singleFeed)
+            .expect(200);
+
+        expect(mockMetaStorageSet).toMatchSnapshot();
+    });
 
     afterEach(() => server.close());
 });
@@ -532,6 +572,16 @@ describe('bundling single js feed', () => {
         expect(errorEvent.isBoom).toBe(true);
     });
 
+    test('persist meta information', async () => {
+        expect.assertions(1);
+        await supertest(server)
+            .post('/bundle/js/myId')
+            .send(bundles)
+            .expect(200);
+
+        expect(mockMetaStorageSet).toMatchSnapshot();
+    });
+
     afterEach(() => server.close());
 });
 
@@ -655,6 +705,16 @@ describe('bundling single css feed', () => {
             .post('/bundle/css')
             .send(['completelyfake.json'])
             .expect(404));
+
+    test('persist meta information', async () => {
+        expect.assertions(1);
+        await supertest(server)
+            .post('/bundle/css/myId')
+            .send(bundles)
+            .expect(200);
+
+        expect(mockMetaStorageSet).toMatchSnapshot();
+    });
 
     afterEach(() => server.close());
 });

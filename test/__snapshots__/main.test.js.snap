@@ -106,10 +106,38 @@ Object {
 }
 `;
 
+exports[`bundling single css feed persist meta information 1`] = `
+[MockFunction metaStorageSet] {
+  "calls": Array [
+    Array [
+      "css/myId",
+      Object {
+        "id": "myId",
+        "version": "28b015efa819a445a46282fff9125aac41deed83d81d5f19a994a322f30cbbfb.css",
+      },
+    ],
+  ],
+}
+`;
+
 exports[`bundling single js feed /bundle/js 1`] = `
 Object {
   "file": "0b8699357bf3807af4ed0e91c1e8bbc5ae86c2fafa6a2b3c3444950457d034fd.js",
   "uri": "/bundle/0b8699357bf3807af4ed0e91c1e8bbc5ae86c2fafa6a2b3c3444950457d034fd.js",
+}
+`;
+
+exports[`bundling single js feed persist meta information 1`] = `
+[MockFunction metaStorageSet] {
+  "calls": Array [
+    Array [
+      "js/myId",
+      Object {
+        "id": "myId",
+        "version": "0b8699357bf3807af4ed0e91c1e8bbc5ae86c2fafa6a2b3c3444950457d034fd.js",
+      },
+    ],
+  ],
 }
 `;
 
@@ -122,4 +150,32 @@ Array [
     "source": "\\"use strict\\";module.exports.world=function(){return\\"world\\"};",
   },
 ]
+`;
+
+exports[`uploading css feeds /feed/css/myId 1`] = `
+[MockFunction metaStorageSet] {
+  "calls": Array [
+    Array [
+      "css/myId",
+      Object {
+        "id": "myId",
+        "version": "3252bd07a7cbf1c6be20e197ef81070673d00ee887ebf1e3ca60582f44e37617.json",
+      },
+    ],
+  ],
+}
+`;
+
+exports[`uploading js feeds /feed/js/myId 1`] = `
+[MockFunction metaStorageSet] {
+  "calls": Array [
+    Array [
+      "js/myId",
+      Object {
+        "id": "myId",
+        "version": "f652e904f72daa8bd884df867b69861bcb90be9508a1d558f05070d5d044d0d3.json",
+      },
+    ],
+  ],
+}
 `;
