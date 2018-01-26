@@ -645,6 +645,15 @@ describe('bundling multiple js feeds', () => {
         expect(text).toMatchSnapshot();
     });
 
+    test('/bundle/:file?minify=true', async () => {
+        expect.assertions(4);
+        const { text, headers } = await get(
+            `/bundle/${fileName}?minify=true`
+        ).expect(200);
+        expect(headers['content-type']).toMatch(/application\/javascript/);
+        expect(text).toMatchSnapshot();
+    });
+
     test('/bundle/js with multiple invalid bundle reference', () =>
         supertest(server)
             .post('/bundle/js')
