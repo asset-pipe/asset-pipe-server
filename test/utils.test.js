@@ -53,3 +53,22 @@ test('upload() handles errors correctly', async () => {
         endWorkers();
     }
 });
+
+test('passing options to bundleFeeds()', async () => {
+    expect.hasAssertions();
+    const { bundleFeeds, endWorkers } = require('../lib/utils');
+    const feed = [
+        {
+            id: 'c645cf572a8f5acf8716e4846b408d3b1ca45c58',
+            entry: true,
+            source: 'console.log(process.env.NODE_ENV)',
+            deps: {},
+            file: './assets/js/hello.js',
+        },
+    ];
+
+    const result = await bundleFeeds([feed], 'js', { env: 'production' });
+    expect(result).toMatch('production');
+    expect(result).toMatchSnapshot();
+    endWorkers();
+});
