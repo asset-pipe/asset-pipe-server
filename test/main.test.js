@@ -810,3 +810,24 @@ describe('unknown asset types', () => {
 
     afterEach(() => server.close());
 });
+
+test('options - env defaults to development when process.env.NODE_ENV not set', () => {
+    const env = process.env.NODE_ENV;
+    delete process.env.NODE_ENV;
+    const router = new Router();
+    process.env.NODE_ENV = env;
+    expect(router.options.env).toBe('development');
+});
+
+test('options - env overridden in constructor', () => {
+    const router = new Router(null, { env: 'production' });
+    expect(router.options.env).toBe('production');
+});
+
+test('options - env defaults to process.env.NODE_ENV when process.env.NODE_ENV set', () => {
+    const env = process.env.NODE_ENV;
+    process.env.NODE_ENV = 'production';
+    const router = new Router();
+    process.env.NODE_ENV = env;
+    expect(router.options.env).toBe('production');
+});
