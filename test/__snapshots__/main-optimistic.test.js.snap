@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`publishing and bundling css feeds publish assets and instructions together 1`] = `"\\"/* my-module-1/main.css */\\\\nh2: { color: green; }\\\\n\\\\n/* my-module-2/main.css */\\\\nh1 { color:blue; }\\""`;
+
+exports[`publishing and bundling css feeds publish assets before instructions 1`] = `"\\"/* my-module-1/main.css */\\\\nh2: { color: green; }\\\\n\\\\n/* my-module-2/main.css */\\\\nh1 { color:blue; }\\""`;
+
+exports[`publishing and bundling css feeds publish instructions before assets 1`] = `"\\"/* my-module-1/main.css */\\\\nh2: { color: green; }\\\\n\\\\n/* my-module-2/main.css */\\\\nh1 { color:blue; }\\""`;
+
+exports[`publishing and bundling js feeds publish assets and instructions together 1`] = `"<html><body><h1>Not Found</h1></body></html>"`;
+
+exports[`publishing and bundling js feeds publish assets before instructions 1`] = `"<html><body><h1>Not Found</h1></body></html>"`;
+
+exports[`publishing and bundling js feeds publish instructions before assets 1`] = `"<html><body><h1>Not Found</h1></body></html>"`;
+
+exports[`publishing and bundling js feeds retrieving feeds published via optimistic bundling 1`] = `
+"[
+  {
+    \\"id\\": \\"1d32a8e1c6cf6e5885241f3ea5fee583560b2dfde38b21ec3f9781c91d58f42e\\",
+    \\"name\\": \\"my-module-1\\",
+    \\"version\\": \\"1.0.1\\",
+    \\"file\\": \\"my-module-1/main.js\\",
+    \\"content\\": \\"/* my-module-1/main.js */\\\\nh2: { color: green; }\\\\n\\"
+  }
+]"
+`;

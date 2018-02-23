@@ -8,6 +8,7 @@ const supertest = require('supertest');
 const pretty = require('pretty');
 const { PassThrough } = require('readable-stream');
 const { endWorkers } = require('../lib/utils');
+const Hasher = require('../lib/hasher');
 
 const mockMetaStorageSet = jest.fn().mockName('metaStorageSet');
 
