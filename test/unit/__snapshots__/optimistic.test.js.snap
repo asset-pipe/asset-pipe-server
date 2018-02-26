@@ -41,3 +41,19 @@ SinkMem {
   "name": "asset-pipe-sink-mem",
 }
 `;
+
+exports[`publishAssets() - invalid schema given 1`] = `
+[ValidationError: Invalid 'assets' object given when attempting to publish assets. {
+  [41m"tag"[0m[31m [1]: -- missing --[0m
+}
+[31m
+[1] "tag" is required[0m]
+`;
+
+exports[`publishInstructions() - invalid schema given 1`] = `
+[ValidationError: Invalid 'instruction' object given when attempting to publish instructions. {
+  [41m"tag"[0m[31m [1]: -- missing --[0m
+}
+[31m
+[1] "tag" is required[0m]
+`;

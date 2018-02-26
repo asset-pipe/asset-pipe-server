@@ -111,3 +111,15 @@ test('bundleIfNeeded() - does not need to produce bundle', async () => {
     await ob.bundleIfNeeded(['a', 'b', 'c'], 'js');
     expect(sink).toMatchSnapshot();
 });
+
+test('publishAssets() - invalid schema given', async () => {
+    const sink = new Sink();
+    const ob = new OptimisticBundler(sink);
+    expect(ob.publishAssets({}, 'js')).rejects.toMatchSnapshot();
+});
+
+test('publishInstructions() - invalid schema given', async () => {
+    const sink = new Sink();
+    const ob = new OptimisticBundler(sink);
+    expect(ob.publishInstructions({}, 'js')).rejects.toMatchSnapshot();
+});
