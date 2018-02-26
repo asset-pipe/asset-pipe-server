@@ -315,4 +315,14 @@ describe('publishing and bundling js feeds', async () => {
         expect(text).toMatchSnapshot();
         await server.close();
     });
+
+    test('endpoint errors handled', async () => {
+        const sink = new Sink();
+        const router = new Router(sink);
+        const { server } = await createTestServerFor(router.router());
+        const { post } = supertest(server);
+        await post('/publish-assets').expect(400);
+        await post('/publish-instructions').expect(400);
+        await server.close();
+    });
 });
