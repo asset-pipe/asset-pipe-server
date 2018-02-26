@@ -49,22 +49,64 @@ OR with configuration options:
 PORT=3321 LOG_LEVEL=info NODE_ENV=production asset-pipe-server
 ```
 
+### A note on optimistic bundling
+
+The asset server can produce asset bundles in what we call an "optimistic" fashion. This means that asset bundles will be automatically produced and reproduced any time an asset changes or any time
+the definition of which assets should be included in a bundle changes.
+
+In order to take advantage of this feature, you need to exclusively make use of the `/publish-assets` endpoint when uploading `js` and `css` assets, and the `/publish-instructions` endpoint when defining
+or updating the definitions of which assets to include in a given bundle.
+
+#### How optimistic bundling works
+
+Step 1. publish any assets
+
+Step 2. publish instructions on how bundles should be produced.
+
+**Note:** order is not important. You can publish instructions first, then assets or vice versa. You can publish some assets, then instructions, then more assets. Any republishes will trigger new bundles as required.
+
+**Simple Example**
+
+1. Publish some assets by sending the payloads to `/publish-assets`.
+
+```js
+/* request 1: */ { tag: 'server1', type: 'js', data: [/* asset feed as produced by asset pipe client */] }
+/* request 2: */ { tag: 'server2', type: 'js', data: [/* asset feed as produced by asset pipe client */] }
+/* request 3: */ { tag: 'server3', type: 'js', data: [/* asset feed as produced by asset pipe client */] }
+```
+
+2. Publish some instructions by sending an instruction payload to `/publish-instructions`
+
+```js
+{ tag: 'server4', type: 'js', data: ['server1', 'server2', 'server3'] }
+```
+
+In order to refer to a bundle, you can compute the name of the published bundle as follows:
+
+1. compute an sha256 hash for each feed. ie a hash of the data property for each asset publish. (`/publish-assets` also returns this hash each time an asset feed is published)
+2. compute a hash of all hashes produced in step 1. (order is important)
+3. append the correct file extension to the hash (`<hash>.js`).
+
+You can then download the bundle from `/bundle/:hash`
+
 ## Endpoints
 
 The server provides the following endpoints:
 
-| Verb | Endpoint        | Description                                                                  | url params   | query params    | payload      | response          |
-| ---- | --------------- | ---------------------------------------------------------------------------- | ------------ | --------------- | ------------ | ----------------- |
-| POST | /feed/js        | Upload a javascript asset feed                                               | -            | -               | `js feed`    | `feed response`   |
-| POST | /feed/js/:id    | Upload a javascript asset feed and persist metadata to build server          | `identifier` | -               | `js feed`    | `feed response`   |
-| POST | /feed/css       | Upload a css asset feed                                                      | -            | -               | `css feed`   | `feed response`   |
-| POST | /feed/css/:id   | Upload a css asset feed and persist metadata to build server                 | `identifier` | -               | `css feed`   | `feed response`   |
-| GET  | /feed/:id       | Download an asset feed                                                       | `feed id`    | -               | -            | `feed`            |
-| POST | /bundle/js      | Request bundling of a list of js feeds                                       | -            | minify: `false` | `js bundle`  | `bundle response` |
-| POST | /bundle/js/:id  | Request bundling of a list of js feeds and persist metadata to build server  | `identifier` | minify: `false` | `js bundle`  | `bundle response` |
-| POST | /bundle/css     | Request bundling of a list of css feeds                                      | -            | -               | `css bundle` | `bundle response` |
-| POST | /bundle/css/:id | Request bundling of a list of css feeds and persist metadata to build server | `identifier` | -               | `css bundle` | `bundle response` |
-| GET  | /bundle/:id     | Download an asset bundle                                                     | `bundle id`  | -               | -            | `bundle`          |
+| Verb | Endpoint              | Description                                                                      | url params   | query params    | payload                | response          |
+| ---- | --------------------- | -------------------------------------------------------------------------------- | ------------ | --------------- | ---------------------- | ----------------- |
+| POST | /feed/js              | Upload a javascript asset feed                                                   | -            | -               | `js feed`              | `feed response`   |
+| POST | /feed/js/:id          | Upload a javascript asset feed and persist metadata to build server              | `identifier` | -               | `js feed`              | `feed response`   |
+| POST | /feed/css             | Upload a css asset feed                                                          | -            | -               | `css feed`             | `feed response`   |
+| POST | /feed/css/:id         | Upload a css asset feed and persist metadata to build server                     | `identifier` | -               | `css feed`             | `feed response`   |
+| GET  | /feed/:id             | Download an asset feed                                                           | `feed id`    | -               | -                      | `feed`            |
+| POST | /bundle/js            | Request bundling of a list of js feeds                                           | -            | minify: `false` | `js bundle`            | `bundle response` |
+| POST | /bundle/js/:id        | Request bundling of a list of js feeds and persist metadata to build server      | `identifier` | minify: `false` | `js bundle`            | `bundle response` |
+| POST | /bundle/css           | Request bundling of a list of css feeds                                          | -            | -               | `css bundle`           | `bundle response` |
+| POST | /bundle/css/:id       | Request bundling of a list of css feeds and persist metadata to build server     | `identifier` | -               | `css bundle`           | `bundle response` |
+| GET  | /bundle/:id           | Download an asset bundle                                                         | `bundle id`  | -               | -                      | `bundle`          |
+| POST | /publish-assets       | Publish an asset feed in an "optimistic bundling" compatible way.                | -            | -               | `asset definition`     | `feed response`   |
+| POST | /publish-instructions | Publish an asset bundling instruction to begin "optimistically bundling" assets. | -            | -               | `bundling instruction` | `{success: true}` |
 
 See below for explanation and additional detail regarding the various url params, payloads and responses.
 
@@ -167,6 +209,34 @@ _Example_
     "acd1ac21dac12dac12dac12dac1d2ac1d2ac1d2a.json",
     "acd1ac21dac12dac12dac12dac1d2ac1d2ac1d2a.json"
 ];
+```
+
+#### `asset definition`
+
+An object containing both metadata and an asset feed to be published on the asset server.
+
+_Example_
+
+```js
+{
+    tag: 'my-tag', // unique tag to identify all assets sent from this source.
+    type: 'js', // js or css
+    data: [] // this is either a "js feed" or a "css feed" as described above
+}
+```
+
+#### `bundling instruction`
+
+An object containing both metadata and an array of tags to bundle together
+
+_Example_
+
+```js
+{
+    tag: 'my-tag', // unique tag to identify all assets sent from this source.
+    type: 'js', // js or css
+    data: ['tag1', 'tag2', 'tag3'] // this is an array of strings determining which asset feeds (by tag) should be included in the bundle (order is important)
+}
 ```
 
 ### Responses
