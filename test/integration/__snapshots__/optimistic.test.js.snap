@@ -264,7 +264,7 @@ Object {
 
 exports[`publishing a feed via the /publish-assets endpoint 1`] = `
 Object {
-  "file": "podlet1-4997b071527eee6c12db24957abc8b30b63dc46c76a2a1a04826852bf220dcd6.json",
+  "file": "4997b071527eee6c12db24957abc8b30b63dc46c76a2a1a04826852bf220dcd6.json",
   "id": "4997b071527eee6c12db24957abc8b30b63dc46c76a2a1a04826852bf220dcd6",
 }
 `;
