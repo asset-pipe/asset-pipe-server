@@ -44,7 +44,8 @@ const cssFeed1 = [
         name: 'my-module-1',
         version: '1.0.1',
         file: 'my-module-1/main.css',
-        content: '/* my-module-1/main.css */\nh2: { color: green; }\n',
+        deps: {},
+        source: '/* my-module-1/main.css */\nh2: { color: green; }\n',
     },
 ];
 
@@ -54,7 +55,8 @@ const cssFeed2 = [
         name: 'my-module-2',
         version: '1.0.1',
         file: 'my-module-2/main.css',
-        content: '/* my-module-2/main.css */\nh1 { color:blue; }\n',
+        deps: {},
+        source: '/* my-module-2/main.css */\nh1 { color:blue; }\n',
     },
 ];
 const jsFeed1 = [
@@ -63,7 +65,8 @@ const jsFeed1 = [
         name: 'my-module-1',
         version: '1.0.1',
         file: 'my-module-1/main.js',
-        content: '/* my-module-1/main.js */\nh2: { color: green; }\n',
+        deps: {},
+        source: 'const i = 1;',
     },
 ];
 
@@ -73,7 +76,8 @@ const jsFeed2 = [
         name: 'my-module-2',
         version: '1.0.1',
         file: 'my-module-2/main.js',
-        content: '/* my-module-2/main.js */\nh1 { color:blue; }\n',
+        deps: {},
+        source: 'const x = 2;',
     },
 ];
 
