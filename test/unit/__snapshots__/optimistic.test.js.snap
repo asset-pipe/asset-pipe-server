@@ -47,7 +47,7 @@ exports[`publishAssets() - invalid schema given 1`] = `
   [41m"tag"[0m[31m [1]: -- missing --[0m
 }
 [31m
-[1] "tag" is required[0m]
+[1] "asset tag" is required[0m]
 `;
 
 exports[`publishInstructions() - invalid schema given 1`] = `
@@ -55,5 +55,5 @@ exports[`publishInstructions() - invalid schema given 1`] = `
   [41m"tag"[0m[31m [1]: -- missing --[0m
 }
 [31m
-[1] "tag" is required[0m]
+[1] "asset tag" is required[0m]
 `;
