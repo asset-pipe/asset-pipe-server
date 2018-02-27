@@ -219,7 +219,7 @@ _Example_
 
 ```js
 {
-    tag: 'my-tag', // unique tag to identify all assets sent from this source.
+    tag: 'my-tag', // alphanumeric unique tag to identify all assets sent from this source. Eg. podlet-1, recommendations, my-tag
     type: 'js', // js or css
     data: [] // this is either a "js feed" or a "css feed" as described above
 }
