@@ -291,7 +291,6 @@ test('publishing a feed via the /publish-assets endpoint', async () => {
 });
 
 test('publishing bundling instructions via the /publish-instructions endpoint', async () => {
-    expect.assertions(1);
     const router = new Router();
     const { server } = await createTestServerFor(router.router());
     const post = supertest(server).post;
@@ -300,11 +299,10 @@ test('publishing bundling instructions via the /publish-instructions endpoint', 
         type: 'js',
         data: feed1,
     });
-    const { body } = await post('/publish-instructions')
+    await post('/publish-instructions')
         .send({ tag: 'layout1', type: 'js', data: ['podlet1'] })
-        .expect(200);
+        .expect(204);
 
-    expect(body.success).toBe(true);
     return server.close();
 });
 
