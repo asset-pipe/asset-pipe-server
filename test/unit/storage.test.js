@@ -99,7 +99,7 @@ test('setFeed()', async () => {
 test('setBundle()', async () => {
     const sink = new Sink();
     const storage = new Storage(sink);
-    await storage.setBundle('hash1', 'js', '');
+    await storage.setBundle('hash1', 'js', 'dummy content');
     expect(sink.db['hash1.js']).toBeTruthy();
 });
 
