@@ -38,6 +38,7 @@ function createTestServerFor(router) {
     });
 }
 
+beforeAll(() => jest.setTimeout(20000));
 afterAll(() => endWorkers());
 
 describe('Router class', () => {

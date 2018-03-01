@@ -3,6 +3,8 @@
 const Storage = require('../../lib/storage');
 const Sink = require('@asset-pipe/sink-mem');
 
+beforeAll(() => jest.setTimeout(20000));
+
 test('getTags() - no tags previously set', async () => {
     const sink = new Sink();
     const storage = new Storage(sink);

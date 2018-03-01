@@ -9,6 +9,7 @@ const Router = require('../../lib/main');
 const { endWorkers } = require('../../lib/utils');
 const Hasher = require('../../lib/hasher');
 
+beforeAll(() => jest.setTimeout(20000));
 afterAll(() => endWorkers());
 
 function createTestServerFor(router) {

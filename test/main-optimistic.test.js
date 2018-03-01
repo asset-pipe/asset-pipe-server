@@ -36,6 +36,7 @@ function createTestServerFor(router) {
     });
 }
 
+beforeAll(() => jest.setTimeout(20000));
 afterAll(() => endWorkers());
 
 const cssFeed1 = [
