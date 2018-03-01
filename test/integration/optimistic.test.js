@@ -1,13 +1,12 @@
 'use strict';
 
-const publishAssets = require('../../lib/publish-assets');
-const publishInstructions = require('../../lib/publish-instructions');
 const Sink = require('@asset-pipe/sink-mem');
 const express = require('express');
 const supertest = require('supertest');
 const Router = require('../../lib/main');
 const { endWorkers } = require('../../lib/utils');
 const Hasher = require('../../lib/hasher');
+const OptimisticBundler = require('../../lib/optimistic-bundler');
 
 beforeAll(() => jest.setTimeout(20000));
 afterAll(() => endWorkers());
@@ -72,14 +71,15 @@ const cssFeed1 = [
 
 test('optimistic bundling of js feeds', async () => {
     const sink = new Sink();
+    const optimisticBundler = new OptimisticBundler({ sink });
 
-    await publishAssets(sink, {
+    await optimisticBundler.publishAssets({
         tag: 'podlet1',
         type: 'js',
         data: feed1,
     });
 
-    await publishInstructions(sink, {
+    await optimisticBundler.publishInstructions({
         tag: 'layout1',
         type: 'js',
         data: ['podlet1'],
@@ -90,14 +90,15 @@ test('optimistic bundling of js feeds', async () => {
 
 test('publish instructions before publishing assets', async () => {
     const sink = new Sink();
+    const optimisticBundler = new OptimisticBundler({ sink });
 
-    await publishInstructions(sink, {
+    await optimisticBundler.publishInstructions({
         tag: 'layout1',
         type: 'js',
         data: ['podlet1'],
     });
 
-    await publishAssets(sink, {
+    await optimisticBundler.publishAssets({
         tag: 'podlet1',
         type: 'js',
         data: feed1,
@@ -108,14 +109,15 @@ test('publish instructions before publishing assets', async () => {
 
 test('optimistic bundling of css feeds', async () => {
     const sink = new Sink();
+    const optimisticBundler = new OptimisticBundler({ sink });
 
-    await publishAssets(sink, {
+    await optimisticBundler.publishAssets({
         tag: 'podlet1',
         type: 'css',
         data: cssFeed1,
     });
 
-    await publishInstructions(sink, {
+    await optimisticBundler.publishInstructions({
         tag: 'layout1',
         type: 'css',
         data: ['podlet1'],
@@ -126,26 +128,27 @@ test('optimistic bundling of css feeds', async () => {
 
 test('publish instructions before publishing muiltple assets', async () => {
     const sink = new Sink();
+    const optimisticBundler = new OptimisticBundler({ sink });
 
-    await publishInstructions(sink, {
+    await optimisticBundler.publishInstructions({
         tag: 'layout1',
         type: 'js',
         data: ['podlet1', 'podlet2', 'podlet3'],
     });
 
-    await publishAssets(sink, {
+    await optimisticBundler.publishAssets({
         tag: 'podlet1',
         type: 'js',
         data: feed1,
     });
 
-    await publishAssets(sink, {
+    await optimisticBundler.publishAssets({
         tag: 'podlet2',
         type: 'js',
         data: feed2,
     });
 
-    await publishAssets(sink, {
+    await optimisticBundler.publishAssets({
         tag: 'podlet3',
         type: 'js',
         data: feed3,
@@ -156,26 +159,27 @@ test('publish instructions before publishing muiltple assets', async () => {
 
 test('publish instructions updated', async () => {
     const sink = new Sink();
+    const optimisticBundler = new OptimisticBundler({ sink });
 
-    await publishAssets(sink, {
+    await optimisticBundler.publishAssets({
         tag: 'podlet1',
         type: 'js',
         data: feed1,
     });
 
-    await publishAssets(sink, {
+    await optimisticBundler.publishAssets({
         tag: 'podlet2',
         type: 'js',
         data: feed2,
     });
 
-    await publishAssets(sink, {
+    await optimisticBundler.publishAssets({
         tag: 'podlet3',
         type: 'js',
         data: feed3,
     });
 
-    await publishInstructions(sink, {
+    await optimisticBundler.publishInstructions({
         tag: 'layout1',
         type: 'js',
         data: ['podlet1', 'podlet2', 'podlet3'],
@@ -183,7 +187,7 @@ test('publish instructions updated', async () => {
 
     expect(sink.db).toMatchSnapshot();
 
-    await publishInstructions(sink, {
+    await optimisticBundler.publishInstructions({
         tag: 'layout1',
         type: 'js',
         data: ['podlet1', 'podlet2'],
@@ -191,7 +195,7 @@ test('publish instructions updated', async () => {
 
     expect(sink.db).toMatchSnapshot();
 
-    await publishInstructions(sink, {
+    await optimisticBundler.publishInstructions({
         tag: 'layout1',
         type: 'js',
         data: ['podlet1'],
@@ -202,32 +206,33 @@ test('publish instructions updated', async () => {
 
 test('republishing same asset does not trigger a rebuild', async () => {
     const sink = new Sink();
+    const optimisticBundler = new OptimisticBundler({ sink });
 
-    await publishAssets(sink, {
+    await optimisticBundler.publishAssets({
         tag: 'podlet1',
         type: 'js',
         data: feed1,
     });
 
-    await publishAssets(sink, {
+    await optimisticBundler.publishAssets({
         tag: 'podlet2',
         type: 'js',
         data: feed2,
     });
 
-    await publishAssets(sink, {
+    await optimisticBundler.publishAssets({
         tag: 'podlet3',
         type: 'js',
         data: feed3,
     });
 
-    await publishInstructions(sink, {
+    await optimisticBundler.publishInstructions({
         tag: 'layout1',
         type: 'js',
         data: ['podlet1', 'podlet2', 'podlet3'],
     });
 
-    await publishAssets(sink, {
+    await optimisticBundler.publishAssets({
         tag: 'podlet2',
         type: 'js',
         data: feed2,
@@ -238,26 +243,27 @@ test('republishing same asset does not trigger a rebuild', async () => {
 
 test('republishing different asset triggers a rebuild', async () => {
     const sink = new Sink();
+    const optimisticBundler = new OptimisticBundler({ sink });
 
-    await publishAssets(sink, {
+    await optimisticBundler.publishAssets({
         tag: 'podlet1',
         type: 'js',
         data: feed1,
     });
 
-    await publishAssets(sink, {
+    await optimisticBundler.publishAssets({
         tag: 'podlet2',
         type: 'js',
         data: feed2,
     });
 
-    await publishAssets(sink, {
+    await optimisticBundler.publishAssets({
         tag: 'podlet3',
         type: 'js',
         data: feed3,
     });
 
-    await publishInstructions(sink, {
+    await optimisticBundler.publishInstructions({
         tag: 'layout1',
         type: 'js',
         data: ['podlet1', 'podlet2', 'podlet3'],
@@ -265,7 +271,7 @@ test('republishing different asset triggers a rebuild', async () => {
 
     expect(sink.db).toMatchSnapshot();
 
-    await publishAssets(sink, {
+    await optimisticBundler.publishAssets({
         tag: 'podlet2',
         type: 'js',
         data: feed4,
@@ -309,6 +315,7 @@ test('publishing bundling instructions via the /publish-instructions endpoint', 
 
 test('calculating asset filename', async () => {
     const sink = new Sink();
+    const optimisticBundler = new OptimisticBundler({ sink });
 
     const hash = await Hasher.hashArray([
         Hasher.hashContent(feed1),
@@ -316,25 +323,25 @@ test('calculating asset filename', async () => {
         Hasher.hashContent(feed3),
     ]);
 
-    await publishInstructions(sink, {
+    await optimisticBundler.publishInstructions({
         tag: 'layout1',
         type: 'js',
         data: ['podlet1', 'podlet2', 'podlet3'],
     });
 
-    await publishAssets(sink, {
+    await optimisticBundler.publishAssets({
         tag: 'podlet1',
         type: 'js',
         data: feed1,
     });
 
-    await publishAssets(sink, {
+    await optimisticBundler.publishAssets({
         tag: 'podlet2',
         type: 'js',
         data: feed2,
     });
 
-    await publishAssets(sink, {
+    await optimisticBundler.publishAssets({
         tag: 'podlet3',
         type: 'js',
         data: feed3,
