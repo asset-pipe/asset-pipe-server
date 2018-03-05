@@ -326,4 +326,47 @@ describe('publishing and bundling js feeds', async () => {
         await post('/publish-instructions').expect(400);
         await server.close();
     });
+
+    test('info logs get emitted', async done => {
+        expect.hasAssertions();
+        const sink = new Sink();
+        const router = new Router(sink);
+        router.once('info', log => {
+            expect(log).toMatchSnapshot();
+            done();
+        });
+        const { server } = await createTestServerFor(router.router());
+        const { post } = supertest(server);
+        const feed1 = {
+            tag: 'podlet1',
+            type: 'js',
+            data: jsFeed1,
+        };
+        await post('/publish-assets').send(feed1);
+        await server.close();
+    });
+
+    test('info logs get logged when logger is provided', async () => {
+        expect.hasAssertions();
+        const sink = new Sink();
+        const logger = {
+            trace() {},
+            debug() {},
+            info: jest.fn(),
+            warn() {},
+            error() {},
+            fatal() {},
+        };
+        const router = new Router(sink, { logger });
+        const { server } = await createTestServerFor(router.router());
+        const { post } = supertest(server);
+        const feed1 = {
+            tag: 'podlet1',
+            type: 'js',
+            data: jsFeed1,
+        };
+        await post('/publish-assets').send(feed1);
+        expect(logger.info).toMatchSnapshot();
+        await server.close();
+    });
 });

@@ -832,3 +832,8 @@ test('options - env defaults to process.env.NODE_ENV when process.env.NODE_ENV s
     process.env.NODE_ENV = env;
     expect(router.options.env).toBe('production');
 });
+
+test('options - passing in an invalid logger', () => {
+    const logger = { info() {} };
+    expect(() => new Router(null, { logger })).toThrowError();
+});
