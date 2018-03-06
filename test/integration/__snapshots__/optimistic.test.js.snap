@@ -1,274 +1,55 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`optimistic bundling of css feeds 1`] = `
-Object {
-  "2c408796d55d03d6fbaef774c591b868cf07cac4147bc61d3b40825e16f725ab.css": "h1 { color: red; }",
-  "ed8954cab48b223649511da5e5d51f1cfce3f4056bd11513be00a60f338cfa27.json": "[
-  {
-    \\"id\\": \\"c645cf572a8f5acf8716e4846b408d3b1ca45c58\\",
-    \\"source\\": \\"h1 { color: red; }\\",
-    \\"deps\\": {},
-    \\"file\\": \\"./assets/css/bar.js\\"
-  }
-]",
-  "meta/instructions.json": "{
-  \\"layout1/css\\": {
-    \\"tag\\": \\"layout1\\",
-    \\"type\\": \\"css\\",
-    \\"data\\": [
-      \\"podlet1\\"
-    ]
-  }
-}",
-  "meta/tags.json": "{
-  \\"podlet1/css\\": \\"ed8954cab48b223649511da5e5d51f1cfce3f4056bd11513be00a60f338cfa27\\"
-}",
-}
-`;
+exports[`optimistic bundling of css feeds 1`] = `"h1 { color: red; }"`;
 
 exports[`optimistic bundling of js feeds 1`] = `
-Object {
-  "4997b071527eee6c12db24957abc8b30b63dc46c76a2a1a04826852bf220dcd6.json": "[
-  {
-    \\"id\\": \\"c645cf572a8f5acf8716e4846b408d3b1ca45c58\\",
-    \\"source\\": \\"\\\\\\"use strict\\\\\\";module.exports.world=function(){return\\\\\\"world\\\\\\"};\\",
-    \\"deps\\": {},
-    \\"file\\": \\"./assets/js/bar.js\\"
-  }
-]",
-  "8b9a3142fa84751f4a0b6578f58024bd3b98aea6fb47f8e87dd0c813a250fa95.js": "(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require==\\"function\\"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error(\\"Cannot find module '\\"+o+\\"'\\");throw f.code=\\"MODULE_NOT_FOUND\\",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require==\\"function\\"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({},{},[]);
-",
-  "meta/instructions.json": "{
-  \\"layout1/js\\": {
-    \\"tag\\": \\"layout1\\",
-    \\"type\\": \\"js\\",
-    \\"data\\": [
-      \\"podlet1\\"
-    ]
-  }
-}",
-  "meta/tags.json": "{
-  \\"podlet1/js\\": \\"4997b071527eee6c12db24957abc8b30b63dc46c76a2a1a04826852bf220dcd6\\"
-}",
-}
+"(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require==\\"function\\"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error(\\"Cannot find module '\\"+o+\\"'\\");throw f.code=\\"MODULE_NOT_FOUND\\",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require==\\"function\\"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({},{},[]);
+"
 `;
 
 exports[`publish instructions before publishing assets 1`] = `
-Object {
-  "4997b071527eee6c12db24957abc8b30b63dc46c76a2a1a04826852bf220dcd6.json": "[
-  {
-    \\"id\\": \\"c645cf572a8f5acf8716e4846b408d3b1ca45c58\\",
-    \\"source\\": \\"\\\\\\"use strict\\\\\\";module.exports.world=function(){return\\\\\\"world\\\\\\"};\\",
-    \\"deps\\": {},
-    \\"file\\": \\"./assets/js/bar.js\\"
-  }
-]",
-  "8b9a3142fa84751f4a0b6578f58024bd3b98aea6fb47f8e87dd0c813a250fa95.js": "(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require==\\"function\\"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error(\\"Cannot find module '\\"+o+\\"'\\");throw f.code=\\"MODULE_NOT_FOUND\\",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require==\\"function\\"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({},{},[]);
-",
-  "meta/instructions.json": "{
-  \\"layout1/js\\": {
-    \\"tag\\": \\"layout1\\",
-    \\"type\\": \\"js\\",
-    \\"data\\": [
-      \\"podlet1\\"
-    ]
-  }
-}",
-  "meta/tags.json": "{
-  \\"podlet1/js\\": \\"4997b071527eee6c12db24957abc8b30b63dc46c76a2a1a04826852bf220dcd6\\"
-}",
-}
+"(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require==\\"function\\"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error(\\"Cannot find module '\\"+o+\\"'\\");throw f.code=\\"MODULE_NOT_FOUND\\",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require==\\"function\\"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({},{},[]);
+"
 `;
 
 exports[`publish instructions before publishing muiltple assets 1`] = `
-Object {
-  "4997b071527eee6c12db24957abc8b30b63dc46c76a2a1a04826852bf220dcd6.json": "[
-  {
-    \\"id\\": \\"c645cf572a8f5acf8716e4846b408d3b1ca45c58\\",
-    \\"source\\": \\"\\\\\\"use strict\\\\\\";module.exports.world=function(){return\\\\\\"world\\\\\\"};\\",
-    \\"deps\\": {},
-    \\"file\\": \\"./assets/js/bar.js\\"
-  }
-]",
-  "5da0149fc4645d9598ea9b3c14e9ac938641ce41be3faf661123c4b1776efce8.json": "[
-  {
-    \\"id\\": \\"a645cf572a8f5acf8716e4846b408d3b1ca45c58\\",
-    \\"source\\": \\"\\\\\\"use strict\\\\\\";module.exports.world=function(){return\\\\\\"world\\\\\\"};\\",
-    \\"deps\\": {},
-    \\"file\\": \\"./assets/js/baz.js\\"
-  }
-]",
-  "81840961ff9dff9c99dc7f3e04a829a90a3169b31e38f452f9c4ea04bc6436d3.js": "(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require==\\"function\\"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error(\\"Cannot find module '\\"+o+\\"'\\");throw f.code=\\"MODULE_NOT_FOUND\\",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require==\\"function\\"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({},{},[]);
-",
-  "f9033f245494ef9e88bfbcc4d79ce4996d51ab0bb16e37791b704c41c5b212ae.json": "[
-  {
-    \\"id\\": \\"b645cf572a8f5acf8716e4846b408d3b1ca45c58\\",
-    \\"source\\": \\"\\\\\\"use strict\\\\\\";module.exports.world=function(){return\\\\\\"world\\\\\\"};\\",
-    \\"deps\\": {},
-    \\"file\\": \\"./assets/js/foo.js\\"
-  }
-]",
-  "meta/instructions.json": "{
-  \\"layout1/js\\": {
-    \\"tag\\": \\"layout1\\",
-    \\"type\\": \\"js\\",
-    \\"data\\": [
-      \\"podlet1\\",
-      \\"podlet2\\",
-      \\"podlet3\\"
-    ]
-  }
-}",
-  "meta/tags.json": "{
-  \\"podlet1/js\\": \\"4997b071527eee6c12db24957abc8b30b63dc46c76a2a1a04826852bf220dcd6\\",
-  \\"podlet2/js\\": \\"f9033f245494ef9e88bfbcc4d79ce4996d51ab0bb16e37791b704c41c5b212ae\\",
-  \\"podlet3/js\\": \\"5da0149fc4645d9598ea9b3c14e9ac938641ce41be3faf661123c4b1776efce8\\"
-}",
-}
+"(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require==\\"function\\"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error(\\"Cannot find module '\\"+o+\\"'\\");throw f.code=\\"MODULE_NOT_FOUND\\",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require==\\"function\\"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({},{},[]);
+"
 `;
 
 exports[`publish instructions updated 1`] = `
 Object {
-  "4997b071527eee6c12db24957abc8b30b63dc46c76a2a1a04826852bf220dcd6.json": "[
-  {
-    \\"id\\": \\"c645cf572a8f5acf8716e4846b408d3b1ca45c58\\",
-    \\"source\\": \\"\\\\\\"use strict\\\\\\";module.exports.world=function(){return\\\\\\"world\\\\\\"};\\",
-    \\"deps\\": {},
-    \\"file\\": \\"./assets/js/bar.js\\"
-  }
-]",
-  "5da0149fc4645d9598ea9b3c14e9ac938641ce41be3faf661123c4b1776efce8.json": "[
-  {
-    \\"id\\": \\"a645cf572a8f5acf8716e4846b408d3b1ca45c58\\",
-    \\"source\\": \\"\\\\\\"use strict\\\\\\";module.exports.world=function(){return\\\\\\"world\\\\\\"};\\",
-    \\"deps\\": {},
-    \\"file\\": \\"./assets/js/baz.js\\"
-  }
-]",
+  "/instructions/js/layout1.json": "{\\"tag\\":\\"layout1\\",\\"type\\":\\"js\\",\\"data\\":[\\"podlet1\\",\\"podlet2\\",\\"podlet3\\"]}",
+  "/tags/js/podlet1.txt": "4997b071527eee6c12db24957abc8b30b63dc46c76a2a1a04826852bf220dcd6",
+  "/tags/js/podlet2.txt": "f9033f245494ef9e88bfbcc4d79ce4996d51ab0bb16e37791b704c41c5b212ae",
+  "/tags/js/podlet3.txt": "5da0149fc4645d9598ea9b3c14e9ac938641ce41be3faf661123c4b1776efce8",
+  "4997b071527eee6c12db24957abc8b30b63dc46c76a2a1a04826852bf220dcd6.json": "[{\\"id\\":\\"c645cf572a8f5acf8716e4846b408d3b1ca45c58\\",\\"source\\":\\"\\\\\\"use strict\\\\\\";module.exports.world=function(){return\\\\\\"world\\\\\\"};\\",\\"deps\\":{},\\"file\\":\\"./assets/js/bar.js\\"}]",
+  "5da0149fc4645d9598ea9b3c14e9ac938641ce41be3faf661123c4b1776efce8.json": "[{\\"id\\":\\"a645cf572a8f5acf8716e4846b408d3b1ca45c58\\",\\"source\\":\\"\\\\\\"use strict\\\\\\";module.exports.world=function(){return\\\\\\"world\\\\\\"};\\",\\"deps\\":{},\\"file\\":\\"./assets/js/baz.js\\"}]",
   "81840961ff9dff9c99dc7f3e04a829a90a3169b31e38f452f9c4ea04bc6436d3.js": "(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require==\\"function\\"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error(\\"Cannot find module '\\"+o+\\"'\\");throw f.code=\\"MODULE_NOT_FOUND\\",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require==\\"function\\"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({},{},[]);
 ",
-  "f9033f245494ef9e88bfbcc4d79ce4996d51ab0bb16e37791b704c41c5b212ae.json": "[
-  {
-    \\"id\\": \\"b645cf572a8f5acf8716e4846b408d3b1ca45c58\\",
-    \\"source\\": \\"\\\\\\"use strict\\\\\\";module.exports.world=function(){return\\\\\\"world\\\\\\"};\\",
-    \\"deps\\": {},
-    \\"file\\": \\"./assets/js/foo.js\\"
-  }
-]",
-  "meta/instructions.json": "{
-  \\"layout1/js\\": {
-    \\"tag\\": \\"layout1\\",
-    \\"type\\": \\"js\\",
-    \\"data\\": [
-      \\"podlet1\\",
-      \\"podlet2\\",
-      \\"podlet3\\"
-    ]
-  }
-}",
-  "meta/tags.json": "{
-  \\"podlet1/js\\": \\"4997b071527eee6c12db24957abc8b30b63dc46c76a2a1a04826852bf220dcd6\\",
-  \\"podlet2/js\\": \\"f9033f245494ef9e88bfbcc4d79ce4996d51ab0bb16e37791b704c41c5b212ae\\",
-  \\"podlet3/js\\": \\"5da0149fc4645d9598ea9b3c14e9ac938641ce41be3faf661123c4b1776efce8\\"
-}",
+  "f9033f245494ef9e88bfbcc4d79ce4996d51ab0bb16e37791b704c41c5b212ae.json": "[{\\"id\\":\\"b645cf572a8f5acf8716e4846b408d3b1ca45c58\\",\\"source\\":\\"\\\\\\"use strict\\\\\\";module.exports.world=function(){return\\\\\\"world\\\\\\"};\\",\\"deps\\":{},\\"file\\":\\"./assets/js/foo.js\\"}]",
 }
 `;
 
 exports[`publish instructions updated 2`] = `
 Object {
-  "4997b071527eee6c12db24957abc8b30b63dc46c76a2a1a04826852bf220dcd6.json": "[
-  {
-    \\"id\\": \\"c645cf572a8f5acf8716e4846b408d3b1ca45c58\\",
-    \\"source\\": \\"\\\\\\"use strict\\\\\\";module.exports.world=function(){return\\\\\\"world\\\\\\"};\\",
-    \\"deps\\": {},
-    \\"file\\": \\"./assets/js/bar.js\\"
-  }
-]",
-  "5da0149fc4645d9598ea9b3c14e9ac938641ce41be3faf661123c4b1776efce8.json": "[
-  {
-    \\"id\\": \\"a645cf572a8f5acf8716e4846b408d3b1ca45c58\\",
-    \\"source\\": \\"\\\\\\"use strict\\\\\\";module.exports.world=function(){return\\\\\\"world\\\\\\"};\\",
-    \\"deps\\": {},
-    \\"file\\": \\"./assets/js/baz.js\\"
-  }
-]",
+  "/instructions/js/layout1.json": "{\\"tag\\":\\"layout1\\",\\"type\\":\\"js\\",\\"data\\":[\\"podlet1\\",\\"podlet2\\"]}",
+  "/tags/js/podlet1.txt": "4997b071527eee6c12db24957abc8b30b63dc46c76a2a1a04826852bf220dcd6",
+  "/tags/js/podlet2.txt": "f9033f245494ef9e88bfbcc4d79ce4996d51ab0bb16e37791b704c41c5b212ae",
+  "/tags/js/podlet3.txt": "5da0149fc4645d9598ea9b3c14e9ac938641ce41be3faf661123c4b1776efce8",
+  "4997b071527eee6c12db24957abc8b30b63dc46c76a2a1a04826852bf220dcd6.json": "[{\\"id\\":\\"c645cf572a8f5acf8716e4846b408d3b1ca45c58\\",\\"source\\":\\"\\\\\\"use strict\\\\\\";module.exports.world=function(){return\\\\\\"world\\\\\\"};\\",\\"deps\\":{},\\"file\\":\\"./assets/js/bar.js\\"}]",
+  "5da0149fc4645d9598ea9b3c14e9ac938641ce41be3faf661123c4b1776efce8.json": "[{\\"id\\":\\"a645cf572a8f5acf8716e4846b408d3b1ca45c58\\",\\"source\\":\\"\\\\\\"use strict\\\\\\";module.exports.world=function(){return\\\\\\"world\\\\\\"};\\",\\"deps\\":{},\\"file\\":\\"./assets/js/baz.js\\"}]",
   "81840961ff9dff9c99dc7f3e04a829a90a3169b31e38f452f9c4ea04bc6436d3.js": "(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require==\\"function\\"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error(\\"Cannot find module '\\"+o+\\"'\\");throw f.code=\\"MODULE_NOT_FOUND\\",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require==\\"function\\"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({},{},[]);
 ",
-  "f9033f245494ef9e88bfbcc4d79ce4996d51ab0bb16e37791b704c41c5b212ae.json": "[
-  {
-    \\"id\\": \\"b645cf572a8f5acf8716e4846b408d3b1ca45c58\\",
-    \\"source\\": \\"\\\\\\"use strict\\\\\\";module.exports.world=function(){return\\\\\\"world\\\\\\"};\\",
-    \\"deps\\": {},
-    \\"file\\": \\"./assets/js/foo.js\\"
-  }
-]",
+  "f9033f245494ef9e88bfbcc4d79ce4996d51ab0bb16e37791b704c41c5b212ae.json": "[{\\"id\\":\\"b645cf572a8f5acf8716e4846b408d3b1ca45c58\\",\\"source\\":\\"\\\\\\"use strict\\\\\\";module.exports.world=function(){return\\\\\\"world\\\\\\"};\\",\\"deps\\":{},\\"file\\":\\"./assets/js/foo.js\\"}]",
   "f956e6d4a3fb7045615ced0881e241ce1a9ddf34e6dca29d1d8cb12dcdc3a12c.js": "(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require==\\"function\\"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error(\\"Cannot find module '\\"+o+\\"'\\");throw f.code=\\"MODULE_NOT_FOUND\\",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require==\\"function\\"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({},{},[]);
 ",
-  "meta/instructions.json": "{
-  \\"layout1/js\\": {
-    \\"tag\\": \\"layout1\\",
-    \\"type\\": \\"js\\",
-    \\"data\\": [
-      \\"podlet1\\",
-      \\"podlet2\\"
-    ]
-  }
-}",
-  "meta/tags.json": "{
-  \\"podlet1/js\\": \\"4997b071527eee6c12db24957abc8b30b63dc46c76a2a1a04826852bf220dcd6\\",
-  \\"podlet2/js\\": \\"f9033f245494ef9e88bfbcc4d79ce4996d51ab0bb16e37791b704c41c5b212ae\\",
-  \\"podlet3/js\\": \\"5da0149fc4645d9598ea9b3c14e9ac938641ce41be3faf661123c4b1776efce8\\"
-}",
 }
 `;
 
 exports[`publish instructions updated 3`] = `
-Object {
-  "4997b071527eee6c12db24957abc8b30b63dc46c76a2a1a04826852bf220dcd6.json": "[
-  {
-    \\"id\\": \\"c645cf572a8f5acf8716e4846b408d3b1ca45c58\\",
-    \\"source\\": \\"\\\\\\"use strict\\\\\\";module.exports.world=function(){return\\\\\\"world\\\\\\"};\\",
-    \\"deps\\": {},
-    \\"file\\": \\"./assets/js/bar.js\\"
-  }
-]",
-  "5da0149fc4645d9598ea9b3c14e9ac938641ce41be3faf661123c4b1776efce8.json": "[
-  {
-    \\"id\\": \\"a645cf572a8f5acf8716e4846b408d3b1ca45c58\\",
-    \\"source\\": \\"\\\\\\"use strict\\\\\\";module.exports.world=function(){return\\\\\\"world\\\\\\"};\\",
-    \\"deps\\": {},
-    \\"file\\": \\"./assets/js/baz.js\\"
-  }
-]",
-  "81840961ff9dff9c99dc7f3e04a829a90a3169b31e38f452f9c4ea04bc6436d3.js": "(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require==\\"function\\"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error(\\"Cannot find module '\\"+o+\\"'\\");throw f.code=\\"MODULE_NOT_FOUND\\",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require==\\"function\\"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({},{},[]);
-",
-  "8b9a3142fa84751f4a0b6578f58024bd3b98aea6fb47f8e87dd0c813a250fa95.js": "(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require==\\"function\\"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error(\\"Cannot find module '\\"+o+\\"'\\");throw f.code=\\"MODULE_NOT_FOUND\\",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require==\\"function\\"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({},{},[]);
-",
-  "f9033f245494ef9e88bfbcc4d79ce4996d51ab0bb16e37791b704c41c5b212ae.json": "[
-  {
-    \\"id\\": \\"b645cf572a8f5acf8716e4846b408d3b1ca45c58\\",
-    \\"source\\": \\"\\\\\\"use strict\\\\\\";module.exports.world=function(){return\\\\\\"world\\\\\\"};\\",
-    \\"deps\\": {},
-    \\"file\\": \\"./assets/js/foo.js\\"
-  }
-]",
-  "f956e6d4a3fb7045615ced0881e241ce1a9ddf34e6dca29d1d8cb12dcdc3a12c.js": "(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require==\\"function\\"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error(\\"Cannot find module '\\"+o+\\"'\\");throw f.code=\\"MODULE_NOT_FOUND\\",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require==\\"function\\"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({},{},[]);
-",
-  "meta/instructions.json": "{
-  \\"layout1/js\\": {
-    \\"tag\\": \\"layout1\\",
-    \\"type\\": \\"js\\",
-    \\"data\\": [
-      \\"podlet1\\"
-    ]
-  }
-}",
-  "meta/tags.json": "{
-  \\"podlet1/js\\": \\"4997b071527eee6c12db24957abc8b30b63dc46c76a2a1a04826852bf220dcd6\\",
-  \\"podlet2/js\\": \\"f9033f245494ef9e88bfbcc4d79ce4996d51ab0bb16e37791b704c41c5b212ae\\",
-  \\"podlet3/js\\": \\"5da0149fc4645d9598ea9b3c14e9ac938641ce41be3faf661123c4b1776efce8\\"
-}",
-}
+"(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require==\\"function\\"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error(\\"Cannot find module '\\"+o+\\"'\\");throw f.code=\\"MODULE_NOT_FOUND\\",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require==\\"function\\"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({},{},[]);
+"
 `;
 
 exports[`publishing a feed via the /publish-assets endpoint 1`] = `
@@ -279,152 +60,16 @@ Object {
 `;
 
 exports[`republishing different asset triggers a rebuild 1`] = `
-Object {
-  "4997b071527eee6c12db24957abc8b30b63dc46c76a2a1a04826852bf220dcd6.json": "[
-  {
-    \\"id\\": \\"c645cf572a8f5acf8716e4846b408d3b1ca45c58\\",
-    \\"source\\": \\"\\\\\\"use strict\\\\\\";module.exports.world=function(){return\\\\\\"world\\\\\\"};\\",
-    \\"deps\\": {},
-    \\"file\\": \\"./assets/js/bar.js\\"
-  }
-]",
-  "5da0149fc4645d9598ea9b3c14e9ac938641ce41be3faf661123c4b1776efce8.json": "[
-  {
-    \\"id\\": \\"a645cf572a8f5acf8716e4846b408d3b1ca45c58\\",
-    \\"source\\": \\"\\\\\\"use strict\\\\\\";module.exports.world=function(){return\\\\\\"world\\\\\\"};\\",
-    \\"deps\\": {},
-    \\"file\\": \\"./assets/js/baz.js\\"
-  }
-]",
-  "81840961ff9dff9c99dc7f3e04a829a90a3169b31e38f452f9c4ea04bc6436d3.js": "(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require==\\"function\\"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error(\\"Cannot find module '\\"+o+\\"'\\");throw f.code=\\"MODULE_NOT_FOUND\\",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require==\\"function\\"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({},{},[]);
-",
-  "f9033f245494ef9e88bfbcc4d79ce4996d51ab0bb16e37791b704c41c5b212ae.json": "[
-  {
-    \\"id\\": \\"b645cf572a8f5acf8716e4846b408d3b1ca45c58\\",
-    \\"source\\": \\"\\\\\\"use strict\\\\\\";module.exports.world=function(){return\\\\\\"world\\\\\\"};\\",
-    \\"deps\\": {},
-    \\"file\\": \\"./assets/js/foo.js\\"
-  }
-]",
-  "meta/instructions.json": "{
-  \\"layout1/js\\": {
-    \\"tag\\": \\"layout1\\",
-    \\"type\\": \\"js\\",
-    \\"data\\": [
-      \\"podlet1\\",
-      \\"podlet2\\",
-      \\"podlet3\\"
-    ]
-  }
-}",
-  "meta/tags.json": "{
-  \\"podlet1/js\\": \\"4997b071527eee6c12db24957abc8b30b63dc46c76a2a1a04826852bf220dcd6\\",
-  \\"podlet2/js\\": \\"f9033f245494ef9e88bfbcc4d79ce4996d51ab0bb16e37791b704c41c5b212ae\\",
-  \\"podlet3/js\\": \\"5da0149fc4645d9598ea9b3c14e9ac938641ce41be3faf661123c4b1776efce8\\"
-}",
-}
+"(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require==\\"function\\"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error(\\"Cannot find module '\\"+o+\\"'\\");throw f.code=\\"MODULE_NOT_FOUND\\",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require==\\"function\\"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({},{},[]);
+"
 `;
 
 exports[`republishing different asset triggers a rebuild 2`] = `
-Object {
-  "19f3f812f476bade25e76694c8ea4e96280c1a9f7cda77a813c301b9ef8612c6.js": "(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require==\\"function\\"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error(\\"Cannot find module '\\"+o+\\"'\\");throw f.code=\\"MODULE_NOT_FOUND\\",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require==\\"function\\"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({},{},[]);
-",
-  "4997b071527eee6c12db24957abc8b30b63dc46c76a2a1a04826852bf220dcd6.json": "[
-  {
-    \\"id\\": \\"c645cf572a8f5acf8716e4846b408d3b1ca45c58\\",
-    \\"source\\": \\"\\\\\\"use strict\\\\\\";module.exports.world=function(){return\\\\\\"world\\\\\\"};\\",
-    \\"deps\\": {},
-    \\"file\\": \\"./assets/js/bar.js\\"
-  }
-]",
-  "5da0149fc4645d9598ea9b3c14e9ac938641ce41be3faf661123c4b1776efce8.json": "[
-  {
-    \\"id\\": \\"a645cf572a8f5acf8716e4846b408d3b1ca45c58\\",
-    \\"source\\": \\"\\\\\\"use strict\\\\\\";module.exports.world=function(){return\\\\\\"world\\\\\\"};\\",
-    \\"deps\\": {},
-    \\"file\\": \\"./assets/js/baz.js\\"
-  }
-]",
-  "81840961ff9dff9c99dc7f3e04a829a90a3169b31e38f452f9c4ea04bc6436d3.js": "(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require==\\"function\\"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error(\\"Cannot find module '\\"+o+\\"'\\");throw f.code=\\"MODULE_NOT_FOUND\\",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require==\\"function\\"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({},{},[]);
-",
-  "aa7bd4aa3fb4aa4f56f48e03d86f3d9d9c3d88450f24e3d1d59a50b6832ada07.json": "[
-  {
-    \\"id\\": \\"e645cf572a8f5acf8716e4846b408d3b1ca45c58\\",
-    \\"source\\": \\"\\\\\\"use strict\\\\\\";module.exports.world=function(){return\\\\\\"world\\\\\\"};\\",
-    \\"deps\\": {},
-    \\"file\\": \\"./assets/js/foobar.js\\"
-  }
-]",
-  "f9033f245494ef9e88bfbcc4d79ce4996d51ab0bb16e37791b704c41c5b212ae.json": "[
-  {
-    \\"id\\": \\"b645cf572a8f5acf8716e4846b408d3b1ca45c58\\",
-    \\"source\\": \\"\\\\\\"use strict\\\\\\";module.exports.world=function(){return\\\\\\"world\\\\\\"};\\",
-    \\"deps\\": {},
-    \\"file\\": \\"./assets/js/foo.js\\"
-  }
-]",
-  "meta/instructions.json": "{
-  \\"layout1/js\\": {
-    \\"tag\\": \\"layout1\\",
-    \\"type\\": \\"js\\",
-    \\"data\\": [
-      \\"podlet1\\",
-      \\"podlet2\\",
-      \\"podlet3\\"
-    ]
-  }
-}",
-  "meta/tags.json": "{
-  \\"podlet1/js\\": \\"4997b071527eee6c12db24957abc8b30b63dc46c76a2a1a04826852bf220dcd6\\",
-  \\"podlet2/js\\": \\"aa7bd4aa3fb4aa4f56f48e03d86f3d9d9c3d88450f24e3d1d59a50b6832ada07\\",
-  \\"podlet3/js\\": \\"5da0149fc4645d9598ea9b3c14e9ac938641ce41be3faf661123c4b1776efce8\\"
-}",
-}
+"(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require==\\"function\\"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error(\\"Cannot find module '\\"+o+\\"'\\");throw f.code=\\"MODULE_NOT_FOUND\\",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require==\\"function\\"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({},{},[]);
+"
 `;
 
 exports[`republishing same asset does not trigger a rebuild 1`] = `
-Object {
-  "4997b071527eee6c12db24957abc8b30b63dc46c76a2a1a04826852bf220dcd6.json": "[
-  {
-    \\"id\\": \\"c645cf572a8f5acf8716e4846b408d3b1ca45c58\\",
-    \\"source\\": \\"\\\\\\"use strict\\\\\\";module.exports.world=function(){return\\\\\\"world\\\\\\"};\\",
-    \\"deps\\": {},
-    \\"file\\": \\"./assets/js/bar.js\\"
-  }
-]",
-  "5da0149fc4645d9598ea9b3c14e9ac938641ce41be3faf661123c4b1776efce8.json": "[
-  {
-    \\"id\\": \\"a645cf572a8f5acf8716e4846b408d3b1ca45c58\\",
-    \\"source\\": \\"\\\\\\"use strict\\\\\\";module.exports.world=function(){return\\\\\\"world\\\\\\"};\\",
-    \\"deps\\": {},
-    \\"file\\": \\"./assets/js/baz.js\\"
-  }
-]",
-  "81840961ff9dff9c99dc7f3e04a829a90a3169b31e38f452f9c4ea04bc6436d3.js": "(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require==\\"function\\"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error(\\"Cannot find module '\\"+o+\\"'\\");throw f.code=\\"MODULE_NOT_FOUND\\",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require==\\"function\\"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({},{},[]);
-",
-  "f9033f245494ef9e88bfbcc4d79ce4996d51ab0bb16e37791b704c41c5b212ae.json": "[
-  {
-    \\"id\\": \\"b645cf572a8f5acf8716e4846b408d3b1ca45c58\\",
-    \\"source\\": \\"\\\\\\"use strict\\\\\\";module.exports.world=function(){return\\\\\\"world\\\\\\"};\\",
-    \\"deps\\": {},
-    \\"file\\": \\"./assets/js/foo.js\\"
-  }
-]",
-  "meta/instructions.json": "{
-  \\"layout1/js\\": {
-    \\"tag\\": \\"layout1\\",
-    \\"type\\": \\"js\\",
-    \\"data\\": [
-      \\"podlet1\\",
-      \\"podlet2\\",
-      \\"podlet3\\"
-    ]
-  }
-}",
-  "meta/tags.json": "{
-  \\"podlet1/js\\": \\"4997b071527eee6c12db24957abc8b30b63dc46c76a2a1a04826852bf220dcd6\\",
-  \\"podlet2/js\\": \\"f9033f245494ef9e88bfbcc4d79ce4996d51ab0bb16e37791b704c41c5b212ae\\",
-  \\"podlet3/js\\": \\"5da0149fc4645d9598ea9b3c14e9ac938641ce41be3faf661123c4b1776efce8\\"
-}",
-}
+"(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require==\\"function\\"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error(\\"Cannot find module '\\"+o+\\"'\\");throw f.code=\\"MODULE_NOT_FOUND\\",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require==\\"function\\"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({},{},[]);
+"
 `;

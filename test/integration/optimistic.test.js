@@ -78,14 +78,17 @@ test('optimistic bundling of js feeds', async () => {
         type: 'js',
         data: feed1,
     });
-
     await optimisticBundler.publishInstructions({
         tag: 'layout1',
         type: 'js',
         data: ['podlet1'],
     });
 
-    expect(sink.db).toMatchSnapshot();
+    expect(
+        await sink.get(
+            '8b9a3142fa84751f4a0b6578f58024bd3b98aea6fb47f8e87dd0c813a250fa95.js'
+        )
+    ).toMatchSnapshot();
 });
 
 test('publish instructions before publishing assets', async () => {
@@ -104,7 +107,11 @@ test('publish instructions before publishing assets', async () => {
         data: feed1,
     });
 
-    expect(sink.db).toMatchSnapshot();
+    expect(
+        await sink.get(
+            '8b9a3142fa84751f4a0b6578f58024bd3b98aea6fb47f8e87dd0c813a250fa95.js'
+        )
+    ).toMatchSnapshot();
 });
 
 test('optimistic bundling of css feeds', async () => {
@@ -123,7 +130,11 @@ test('optimistic bundling of css feeds', async () => {
         data: ['podlet1'],
     });
 
-    expect(sink.db).toMatchSnapshot();
+    expect(
+        await sink.get(
+            '2c408796d55d03d6fbaef774c591b868cf07cac4147bc61d3b40825e16f725ab.css'
+        )
+    ).toMatchSnapshot();
 });
 
 test('publish instructions before publishing muiltple assets', async () => {
@@ -154,7 +165,11 @@ test('publish instructions before publishing muiltple assets', async () => {
         data: feed3,
     });
 
-    expect(sink.db).toMatchSnapshot();
+    expect(
+        await sink.get(
+            '81840961ff9dff9c99dc7f3e04a829a90a3169b31e38f452f9c4ea04bc6436d3.js'
+        )
+    ).toMatchSnapshot();
 });
 
 test('publish instructions updated', async () => {
@@ -201,7 +216,11 @@ test('publish instructions updated', async () => {
         data: ['podlet1'],
     });
 
-    expect(sink.db).toMatchSnapshot();
+    expect(
+        await sink.get(
+            '81840961ff9dff9c99dc7f3e04a829a90a3169b31e38f452f9c4ea04bc6436d3.js'
+        )
+    ).toMatchSnapshot();
 });
 
 test('republishing same asset does not trigger a rebuild', async () => {
@@ -238,7 +257,11 @@ test('republishing same asset does not trigger a rebuild', async () => {
         data: feed2,
     });
 
-    expect(sink.db).toMatchSnapshot();
+    expect(
+        await sink.get(
+            '81840961ff9dff9c99dc7f3e04a829a90a3169b31e38f452f9c4ea04bc6436d3.js'
+        )
+    ).toMatchSnapshot();
 });
 
 test('republishing different asset triggers a rebuild', async () => {
@@ -269,7 +292,11 @@ test('republishing different asset triggers a rebuild', async () => {
         data: ['podlet1', 'podlet2', 'podlet3'],
     });
 
-    expect(sink.db).toMatchSnapshot();
+    expect(
+        await sink.get(
+            '81840961ff9dff9c99dc7f3e04a829a90a3169b31e38f452f9c4ea04bc6436d3.js'
+        )
+    ).toMatchSnapshot();
 
     await optimisticBundler.publishAssets({
         tag: 'podlet2',
@@ -277,7 +304,11 @@ test('republishing different asset triggers a rebuild', async () => {
         data: feed4,
     });
 
-    expect(sink.db).toMatchSnapshot();
+    expect(
+        await sink.get(
+            '19f3f812f476bade25e76694c8ea4e96280c1a9f7cda77a813c301b9ef8612c6.js'
+        )
+    ).toMatchSnapshot();
 });
 
 test('publishing a feed via the /publish-assets endpoint', async () => {
@@ -347,5 +378,5 @@ test('calculating asset filename', async () => {
         data: feed3,
     });
 
-    expect(sink.db[`${hash}.js`]).toBeTruthy();
+    expect(await sink.get(`${hash}.js`)).toBeTruthy();
 });

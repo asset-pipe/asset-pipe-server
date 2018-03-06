@@ -51,15 +51,4 @@ exports[`publishing and bundling js feeds publish instructions before assets 1`]
 "
 `;
 
-exports[`publishing and bundling js feeds retrieving feeds published via optimistic bundling 1`] = `
-"[
-  {
-    \\"id\\": \\"1d32a8e1c6cf6e5885241f3ea5fee583560b2dfde38b21ec3f9781c91d58f42e\\",
-    \\"name\\": \\"my-module-1\\",
-    \\"version\\": \\"1.0.1\\",
-    \\"file\\": \\"my-module-1/main.js\\",
-    \\"deps\\": {},
-    \\"source\\": \\"const i = 1;\\"
-  }
-]"
-`;
+exports[`publishing and bundling js feeds retrieving feeds published via optimistic bundling 1`] = `"[{\\"id\\":\\"1d32a8e1c6cf6e5885241f3ea5fee583560b2dfde38b21ec3f9781c91d58f42e\\",\\"name\\":\\"my-module-1\\",\\"version\\":\\"1.0.1\\",\\"file\\":\\"my-module-1/main.js\\",\\"deps\\":{},\\"source\\":\\"const i = 1;\\"}]"`;
