@@ -2,7 +2,6 @@
 
 beforeEach(() => {
     jest.resetModules();
-    jest.setTimeout(20000);
 });
 
 test('bundleFeeds() throws error when bundling JS', async () => {
