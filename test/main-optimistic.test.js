@@ -193,6 +193,22 @@ describe('publishing and bundling css feeds', async () => {
 });
 
 describe('publishing and bundling js feeds', async () => {
+    test('should respond with 400 on bad request', async () => {
+        const sink = new Sink();
+        const router = new Router(sink);
+        const { server } = await createTestServerFor(router.router());
+        const { post } = supertest(server);
+        const instructions = {
+            data: ['podlet1', 'podlet2'],
+        };
+
+        await post('/publish-instructions')
+            .send(instructions)
+            .expect(400);
+
+        await server.close();
+    });
+
     test('publish assets and instructions together', async () => {
         const sink = new Sink();
         const router = new Router(sink);
