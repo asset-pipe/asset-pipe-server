@@ -832,3 +832,31 @@ test('options - env defaults to process.env.NODE_ENV when process.env.NODE_ENV s
     process.env.NODE_ENV = env;
     expect(router.options.env).toBe('production');
 });
+
+test('options - sync method', async () => {
+    const router = new Router();
+    const { server } = await createTestServerFor(router.router());
+    const { get } = supertest(server);
+
+    const { body } = await get('/sync');
+
+    expect(body.publicBundleUrl).toMatch(/https?:\/\/[0-9.]+:[0-9]+\/bundle/);
+    expect(body.publicFeedUrl).toMatch(/https?:\/\/[0-9.]+:[0-9]+\/feed/);
+    await server.close();
+});
+
+test('options - sync method with publicAssetUrl set', async () => {
+    const router = new Router(null, {
+        publicAssetUrl: 'http://my-cdn-url',
+    });
+    const { server } = await createTestServerFor(router.router());
+    const { get } = supertest(server);
+
+    const { body } = await get('/sync');
+
+    expect(body).toEqual({
+        publicBundleUrl: 'http://my-cdn-url',
+        publicFeedUrl: 'http://my-cdn-url',
+    });
+    await server.close();
+});
