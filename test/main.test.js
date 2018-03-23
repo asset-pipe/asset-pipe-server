@@ -860,3 +860,15 @@ test('options - sync method with publicAssetUrl set', async () => {
     });
     await server.close();
 });
+
+test('Sink reader error handled', async () => {
+    const router = new Router();
+    const { server } = await createTestServerFor(router.router());
+    const { get } = supertest(server);
+    router.sink.reader = () => {
+        throw new Error('Exploding reader!!');
+    };
+    await get('/bundle/fake.js').expect(500);
+
+    await server.close();
+});
