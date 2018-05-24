@@ -41,7 +41,7 @@
     "cors": "^2.8.4",
     "express": "^4.16.2",
     "fast-json-stable-stringify": "^2.0.0",
-    "jest-worker": "^22.0.0",
+    "jest-worker": "^23.0.0",
     "joi": "^13.0.2",
     "mime-types": "^2.1.17",
     "p-retry": "^1.0.0",
