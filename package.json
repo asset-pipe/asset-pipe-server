@@ -21,7 +21,8 @@
     "Sveinung Røsaker (https://github.com/sveisvei)",
     "Simen Bekkhus (https://github.com/SimenB)",
     "Richard Walker (https://github.com/digitalsadhu)",
-    "greenkeeper[bot] (http://github.com/apps/greenkeeper)"
+    "greenkeeper[bot] (http://github.com/apps/greenkeeper)",
+    "Ivar Conradi Østhus (https://github.com/ivarconr)"
   ],
   "bugs": {
     "url": "https://github.com/asset-pipe/asset-pipe-build-server/issues"
@@ -32,6 +33,7 @@
     "@asset-pipe/js-reader": "^2.3.1",
     "@asset-pipe/sink-fs": "^1.1.1",
     "@asset-pipe/sink-mem": "^1.1.2",
+    "@podium/metrics": "^3.0.1",
     "abslog": "^2.0.0",
     "body": "^5.1.0",
     "bole": "^3.0.2",
