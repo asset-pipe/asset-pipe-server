@@ -60,6 +60,7 @@ test('bundle()', async () => {
     await sink.set('/tags/js/c.txt', 'hash3');
 
     const bundle = await ob.bundle(
+        'tag',
         ['a', 'b', 'c'],
         ['hash1', 'hash2', 'hash3'],
         'js'
@@ -78,7 +79,7 @@ test('bundleIfNeeded() - produces new bundle', async () => {
     await sink.set('/tags/js/b.txt', 'hash2');
     await sink.set('/tags/js/c.txt', 'hash3');
 
-    await ob.bundleIfNeeded(['a', 'b', 'c'], 'js');
+    await ob.bundleIfNeeded({ tag: 'tag', data: ['a', 'b', 'c'], type: 'js' });
     expect(
         await sink.get(
             'e867367ae217ade7ab1acf25afbb04cf3f3ad88cba5022e3c63a328db2124194.js'
@@ -100,7 +101,7 @@ test('bundleIfNeeded() - does not need to produce bundle', async () => {
     const file =
         'e867367ae217ade7ab1acf25afbb04cf3f3ad88cba5022e3c63a328db2124194.js';
     await sink.set(file, 'content was not replaced');
-    await ob.bundleIfNeeded(['a', 'b', 'c'], 'js');
+    await ob.bundleIfNeeded({ tag: 'tag', data: ['a', 'b', 'c'], type: 'js' });
     expect(
         await sink.get(
             'e867367ae217ade7ab1acf25afbb04cf3f3ad88cba5022e3c63a328db2124194.js'

@@ -142,6 +142,12 @@ exports[`bundling single css feed persist meta information 1`] = `
       },
     ],
   ],
+  "results": Array [
+    Object {
+      "isThrow": false,
+      "value": undefined,
+    },
+  ],
 }
 `;
 
@@ -162,6 +168,12 @@ exports[`bundling single js feed persist meta information 1`] = `
         "version": "8e3f0596cf98d9f11f59f83601d75a5e9e8bed5e3d5d1bd0748cc53b656a1cc7.js",
       },
     ],
+  ],
+  "results": Array [
+    Object {
+      "isThrow": false,
+      "value": undefined,
+    },
   ],
 }
 `;
@@ -188,6 +200,12 @@ exports[`uploading css feeds /feed/css/myId 1`] = `
       },
     ],
   ],
+  "results": Array [
+    Object {
+      "isThrow": false,
+      "value": undefined,
+    },
+  ],
 }
 `;
 
@@ -201,6 +219,12 @@ exports[`uploading js feeds /feed/js/myId 1`] = `
         "version": "f652e904f72daa8bd884df867b69861bcb90be9508a1d558f05070d5d044d0d3.json",
       },
     ],
+  ],
+  "results": Array [
+    Object {
+      "isThrow": false,
+      "value": undefined,
+    },
   ],
 }
 `;
