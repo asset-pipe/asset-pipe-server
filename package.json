@@ -33,7 +33,7 @@
     "@asset-pipe/js-reader": "^2.3.1",
     "@asset-pipe/sink-fs": "^1.1.1",
     "@asset-pipe/sink-mem": "^1.1.2",
-    "@podium/metrics": "^3.0.1",
+    "@metrics/client": "^1.0.0",
     "abslog": "^2.0.0",
     "body": "^5.1.0",
     "bole": "^3.0.2",
@@ -52,7 +52,7 @@
     "uuid": "^3.0.1"
   },
   "devDependencies": {
-    "commitizen": "^2.9.6",
+    "commitizen": "^2.10.1",
     "cz-conventional-changelog": "^2.0.0",
     "eslint": "^4.9.0",
     "eslint-config-finn": "^3.0.0",
@@ -60,7 +60,7 @@
     "eslint-plugin-import": "^2.8.0",
     "husky": "^0.14.3",
     "jest": "^22.1.4",
-    "lint-staged": "^7.0.0",
+    "lint-staged": "^7.2.0",
     "prettier": "^1.9.2",
     "pretty": "^2.0.0",
     "projectz": "^1.4.0",
