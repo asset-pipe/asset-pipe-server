@@ -59,6 +59,11 @@ test('bundle()', async () => {
     await sink.set('/tags/js/b.txt', 'hash2');
     await sink.set('/tags/js/c.txt', 'hash3');
 
+    const buff = [];
+    ob.metrics.on('data', chunk => {
+        buff.push(chunk);
+    });
+
     const bundle = await ob.bundle(
         'tag',
         ['a', 'b', 'c'],
@@ -66,6 +71,14 @@ test('bundle()', async () => {
         'js'
     );
     expect(bundle).toMatchSnapshot();
+
+    ob.metrics.destroy();
+
+    expect(buff).toHaveLength(5);
+    expect(buff[0].toJSON()).toMatchSnapshot({
+        time: expect.any(Number),
+        timestamp: expect.any(Number),
+    });
 });
 
 test('bundleIfNeeded() - produces new bundle', async () => {
@@ -80,11 +93,39 @@ test('bundleIfNeeded() - produces new bundle', async () => {
     await sink.set('/tags/js/c.txt', 'hash3');
 
     await ob.bundleIfNeeded({ tag: 'tag', data: ['a', 'b', 'c'], type: 'js' });
+
     expect(
         await sink.get(
             'e867367ae217ade7ab1acf25afbb04cf3f3ad88cba5022e3c63a328db2124194.js'
         )
     ).toMatchSnapshot();
+});
+
+test('bundleIfNeeded() - produces metrics', async () => {
+    const sink = new Sink();
+    const ob = new OptimisticBundler({ sink });
+
+    await sink.set('hash1.json', JSON.stringify(feed1));
+    await sink.set('hash2.json', JSON.stringify(feed2));
+    await sink.set('hash3.json', JSON.stringify(feed3));
+    await sink.set('/tags/js/a.txt', 'hash1');
+    await sink.set('/tags/js/b.txt', 'hash2');
+    await sink.set('/tags/js/c.txt', 'hash3');
+
+    const buff = [];
+    ob.metrics.on('data', chunk => {
+        buff.push(chunk);
+    });
+
+    await ob.bundleIfNeeded({ tag: 'tag', data: ['a', 'b', 'c'], type: 'js' });
+
+    ob.metrics.destroy();
+
+    expect(buff).toHaveLength(8);
+    expect(buff[0].toJSON()).toMatchSnapshot({
+        time: expect.any(Number),
+        timestamp: expect.any(Number),
+    });
 });
 
 test('bundleIfNeeded() - does not need to produce bundle', async () => {
