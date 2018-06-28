@@ -67,7 +67,7 @@ Step 2. publish instructions on how bundles should be produced.
 
 **Simple Example**
 
-1. Publish some assets by sending the payloads to `/publish-assets`.
+1.  Publish some assets by sending the payloads to `/publish-assets`.
 
 ```js
 /* request 1: */ { tag: 'server1', type: 'js', data: [/* asset feed as produced by asset pipe client */] }
@@ -75,7 +75,7 @@ Step 2. publish instructions on how bundles should be produced.
 /* request 3: */ { tag: 'server3', type: 'js', data: [/* asset feed as produced by asset pipe client */] }
 ```
 
-2. Publish some instructions by sending an instruction payload to `/publish-instructions`
+2.  Publish some instructions by sending an instruction payload to `/publish-instructions`
 
 ```js
 { tag: 'server4', type: 'js', data: ['server1', 'server2', 'server3'] }
@@ -83,9 +83,9 @@ Step 2. publish instructions on how bundles should be produced.
 
 In order to refer to a bundle, you can compute the name of the published bundle as follows:
 
-1. compute an sha256 hash for each feed. ie a hash of the data property for each asset publish. (`/publish-assets` also returns this hash each time an asset feed is published)
-2. compute a hash of all hashes produced in step 1. (order is important)
-3. append the correct file extension to the hash (`<hash>.js`).
+1.  compute an sha256 hash for each feed. ie a hash of the data property for each asset publish. (`/publish-assets` also returns this hash each time an asset feed is published)
+2.  compute a hash of all hashes produced in step 1. (order is important)
+3.  append the correct file extension to the hash (`<hash>.js`).
 
 You can then download the bundle from `/bundle/:hash`
 
@@ -292,13 +292,43 @@ _Example_
 
 Bundle is a piece of bundled javascript or css content.
 
+## Metrics
+
+The asset server produces metrics about bundling times, sizes and so on. In order to consume these, you will need to create your own custom version of the asset-pipe server using express:
+
+**example**
+
+```js
+const express = require("express");
+const Router = require("@asset-pipe/server");
+const router = new Router();
+const app = express();
+
+app.use(router);
+
+app.listen(3000);
+```
+
+Now that we have access to the router, we can listen for metrics
+
+**example**
+
+```js
+router.metrics.on("data", metric => {
+    //...
+});
+```
+
+Metrics are generated using [@metrics/client](https://www.npmjs.com/package/@metrics/client)
+Please see that project for information on how to consume metrics.
+
 ## Contributing
 
 The contribution process is as follows:
 
-* Fork this repository.
-* Make your changes as desired.
-* Run the tests using `npm test`. This will also check to ensure that 100% code coverage is maintained. If not you may need to add additional tests.
-* Stage your changes.
-* Run `git commit` or, if you are not familiar with [semantic commit messages](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit), please run `npm run cm` and follow the prompts instead which will help you write a correct semantic commit message.
-* Push your changes and submit a PR.
+*   Fork this repository.
+*   Make your changes as desired.
+*   Run the tests using `npm test`. This will also check to ensure that 100% code coverage is maintained. If not you may need to add additional tests.
+*   Stage your changes.
+*   Run `git commit` or, if you are not familiar with [semantic commit messages](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit), please run `npm run cm` and follow the prompts instead which will help you write a correct semantic commit message.
+*   Push your changes and submit a PR.
