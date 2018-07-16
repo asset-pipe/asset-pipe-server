@@ -6,7 +6,7 @@ beforeEach(() => {
 
 test('bundleFeeds() throws error when bundling JS', async () => {
     expect.hasAssertions();
-    const { bundleFeeds, endWorkers } = require('../lib/utils');
+    const { bundleFeeds, endWorkers } = require('../lib/utils')();
 
     try {
         await bundleFeeds(
@@ -22,7 +22,7 @@ test('bundleFeeds() throws error when bundling JS', async () => {
 
 test('bundleFeeds() throws error when bundling CSS', async () => {
     expect.hasAssertions();
-    const { bundleFeeds, endWorkers } = require('../lib/utils');
+    const { bundleFeeds, endWorkers } = require('../lib/utils')();
 
     try {
         await bundleFeeds(
@@ -38,7 +38,7 @@ test('bundleFeeds() throws error when bundling CSS', async () => {
 
 test('upload() handles errors correctly', async () => {
     expect.hasAssertions();
-    const { upload, endWorkers } = require('../lib/utils');
+    const { upload, endWorkers } = require('../lib/utils')();
     const sinkStub = {
         async set() {
             throw new Error('Upload failed');
@@ -58,7 +58,7 @@ test('upload() handles errors correctly', async () => {
 
 test('passing options to bundleFeeds()', async () => {
     expect.hasAssertions();
-    const { bundleFeeds, endWorkers } = require('../lib/utils');
+    const { bundleFeeds, endWorkers } = require('../lib/utils')();
     const feed = [
         {
             id: 'c645cf572a8f5acf8716e4846b408d3b1ca45c58',
@@ -77,7 +77,7 @@ test('passing options to bundleFeeds()', async () => {
 
 test('booleanWithDefault', () => {
     expect.hasAssertions();
-    const { booleanWithDefault, endWorkers } = require('../lib/utils');
+    const { booleanWithDefault, endWorkers } = require('../lib/utils')();
     expect(booleanWithDefault('asdasd', 'fallback')).toBe('fallback');
     expect(booleanWithDefault(null, 'fallback')).toBe('fallback');
     expect(booleanWithDefault(undefined, 'fallback')).toBe('fallback');

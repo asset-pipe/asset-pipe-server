@@ -3,7 +3,7 @@
 const express = require('express');
 const Router = require('../lib/main');
 const supertest = require('supertest');
-const { endWorkers } = require('../lib/utils');
+const { endWorkers } = require('../lib/utils')();
 const { hashArray } = require('@asset-pipe/common');
 const { hashContent } = require('../lib/hasher');
 const Sink = require('@asset-pipe/sink-mem');
