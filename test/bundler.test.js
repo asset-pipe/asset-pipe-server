@@ -70,7 +70,7 @@ test('passing options to bundleFeeds()', async () => {
     expect(result).toMatchSnapshot();
 });
 
-test('endWorkers supports bundleInProcess=true', () => {
+test('endWorkers does not explode even though bundleInProcess=true', () => {
     const bundler = new Bundler({ bundleInProcess: true });
-    bundler.endWorkers();
+    return bundler.endWorkers();
 });
