@@ -18,6 +18,9 @@ test('bundleFeeds() throws error when bundling JS', async () => {
 
 test('bundleFeeds() throws error when bundling CSS', async () => {
     expect.hasAssertions();
+
+    // This can't use in-process bundling because of issues with the
+    // Error global in Jest: https://github.com/facebook/jest/issues/2549
     const bundler = new Bundler();
 
     try {
@@ -70,7 +73,41 @@ test('passing options to bundleFeeds()', async () => {
     expect(result).toMatchSnapshot();
 });
 
-test('endWorkers does not explode even though bundleInProcess=true', () => {
-    const bundler = new Bundler({ bundleInProcess: true });
-    return bundler.endWorkers();
+describe('bundleInProcess', () => {
+    it('set to `true` does not use worker', async () => {
+        expect.hasAssertions();
+
+        const bundler = new Bundler({ bundleInProcess: true });
+        const workerWasEnded = await bundler.endWorkers();
+        expect(workerWasEnded).toBe(false);
+    });
+
+    describe('uses worker when', () => {
+        it('set to `false`', async () => {
+            expect.hasAssertions();
+
+            const bundler = new Bundler({ bundleInProcess: false });
+            const workerWasEnded = await bundler.endWorkers();
+
+            expect(workerWasEnded).toBe(true);
+        });
+
+        it('not defined', async () => {
+            expect.hasAssertions();
+
+            const bundlerWithoutConfig = new Bundler();
+            const bundlerWithEmptyConfig = new Bundler({});
+
+            const [
+                workerWithoutConfigWasEnded,
+                workerWithEmptyConfigWasEnded,
+            ] = await Promise.all([
+                bundlerWithoutConfig.endWorkers(),
+                bundlerWithEmptyConfig.endWorkers(),
+            ]);
+
+            expect(workerWithoutConfigWasEnded).toBe(true);
+            expect(workerWithEmptyConfigWasEnded).toBe(true);
+        });
+    });
 });
