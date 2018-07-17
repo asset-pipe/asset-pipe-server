@@ -7,7 +7,6 @@ const Router = require('../lib/main');
 const supertest = require('supertest');
 const pretty = require('pretty');
 const { PassThrough } = require('readable-stream');
-const { endWorkers } = require('../lib/utils')();
 
 const mockMetaStorageSet = jest.fn().mockName('metaStorageSet');
 
@@ -39,7 +38,6 @@ function createTestServerFor(router) {
 }
 
 beforeAll(() => jest.setTimeout(20000));
-afterAll(() => endWorkers());
 
 describe('Router class', () => {
     test('new Router() with no arguments', () => {

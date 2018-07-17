@@ -4,13 +4,15 @@ const Sink = require('@asset-pipe/sink-mem');
 const express = require('express');
 const supertest = require('supertest');
 const Router = require('../../lib/main');
-const { endWorkers } = require('../../lib/utils')();
+const Bundler = require('../../lib/bundler');
 const { hashArray } = require('@asset-pipe/common');
 const { hashContent } = require('../../lib/hasher');
 const OptimisticBundler = require('../../lib/optimistic-bundler');
 
+const bundler = new Bundler();
+
 beforeAll(() => jest.setTimeout(20000));
-afterAll(() => endWorkers());
+afterAll(() => bundler.endWorkers());
 
 function createTestServerFor(router) {
     const app = express();

@@ -2,10 +2,8 @@
 
 const OptimisticBundler = require('../../lib/optimistic-bundler');
 const Sink = require('@asset-pipe/sink-mem');
-const { endWorkers } = require('../../lib/utils')();
 
 beforeAll(() => jest.setTimeout(20000));
-afterAll(() => endWorkers());
 
 const feed1 = [
     {
