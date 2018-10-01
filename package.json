@@ -52,7 +52,7 @@
     "uuid": "^3.0.1"
   },
   "devDependencies": {
-    "commitizen": "^2.10.1",
+    "commitizen": "^3.0.0",
     "cz-conventional-changelog": "^2.0.0",
     "eslint": "^4.9.0",
     "eslint-config-finn": "^3.0.0",
