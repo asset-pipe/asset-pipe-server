@@ -45,7 +45,7 @@
     "express": "4.16.4",
     "fast-json-stable-stringify": "2.0.0",
     "jest-worker": "23.2.0",
-    "joi": "14.0.1",
+    "joi": "14.0.2",
     "mime-types": "2.1.21",
     "p-retry": "2.0.0",
     "parse-json": "4.0.0",
