@@ -35,7 +35,7 @@
     "@asset-pipe/sink-fs": "1.1.4",
     "@asset-pipe/sink-mem": "1.1.3",
     "@metrics/client": "2.1.1",
-    "abslog": "2.2.3",
+    "abslog": "2.3.0",
     "body": "5.1.0",
     "bole": "3.0.2",
     "boom": "7.3.0",
