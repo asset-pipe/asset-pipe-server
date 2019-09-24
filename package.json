@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@asset-pipe/common": "3.0.1",
-    "@asset-pipe/css-reader": "1.1.1",
+    "@asset-pipe/css-reader": "1.2.0",
     "@asset-pipe/js-reader": "^2.3.4",
     "@asset-pipe/sink-fs": "1.1.4",
     "@asset-pipe/sink-mem": "1.1.3",
