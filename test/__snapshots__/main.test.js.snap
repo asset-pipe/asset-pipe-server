@@ -144,7 +144,7 @@ exports[`bundling single css feed persist meta information 1`] = `
   ],
   "results": Array [
     Object {
-      "isThrow": false,
+      "type": "return",
       "value": undefined,
     },
   ],
@@ -171,7 +171,7 @@ exports[`bundling single js feed persist meta information 1`] = `
   ],
   "results": Array [
     Object {
-      "isThrow": false,
+      "type": "return",
       "value": undefined,
     },
   ],
@@ -202,7 +202,7 @@ exports[`uploading css feeds /feed/css/myId 1`] = `
   ],
   "results": Array [
     Object {
-      "isThrow": false,
+      "type": "return",
       "value": undefined,
     },
   ],
@@ -222,7 +222,7 @@ exports[`uploading js feeds /feed/js/myId 1`] = `
   ],
   "results": Array [
     Object {
-      "isThrow": false,
+      "type": "return",
       "value": undefined,
     },
   ],

@@ -40,11 +40,11 @@ exports[`publishing and bundling js feeds info logs get logged when logger is pr
   ],
   "results": Array [
     Object {
-      "isThrow": false,
+      "type": "return",
       "value": undefined,
     },
     Object {
-      "isThrow": false,
+      "type": "return",
       "value": undefined,
     },
   ],

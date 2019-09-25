@@ -81,7 +81,7 @@ const jsFeed2 = [
     },
 ];
 
-describe('publishing and bundling css feeds', async () => {
+describe('publishing and bundling css feeds', () => {
     test('publish assets and instructions together', async () => {
         const sink = new Sink();
         const router = new Router(sink);
@@ -182,7 +182,7 @@ describe('publishing and bundling css feeds', async () => {
     });
 });
 
-describe('publishing and bundling js feeds', async () => {
+describe('publishing and bundling js feeds', () => {
     test('should respond with 400 on bad request', async () => {
         const sink = new Sink();
         const router = new Router(sink);
