@@ -73,10 +73,14 @@ test('bundle()', async () => {
     ob.metrics.destroy();
 
     expect(buff).toHaveLength(5);
-    expect(buff[0].toJSON()).toMatchSnapshot({
-        time: expect.any(Number),
-        timestamp: expect.any(Number),
-    });
+
+    const obj = buff[0].toJSON();
+    expect(obj.name).toEqual('asset_server_retrieve_from_storage_timer');
+    expect(obj.description).toEqual(
+        'Time taken for a retrieve operation from storage'
+    );
+    expect(obj.type).toEqual(5);
+    expect(obj.meta).toEqual({ method: 'getFeed' });
 });
 
 test('bundleIfNeeded() - produces new bundle', async () => {
@@ -120,10 +124,13 @@ test('bundleIfNeeded() - produces metrics', async () => {
     ob.metrics.destroy();
 
     expect(buff).toHaveLength(8);
-    expect(buff[0].toJSON()).toMatchSnapshot({
-        time: expect.any(Number),
-        timestamp: expect.any(Number),
-    });
+    const obj = buff[0].toJSON();
+    expect(obj.name).toEqual('asset_server_retrieve_from_storage_timer');
+    expect(obj.description).toEqual(
+        'Time taken for a retrieve operation from storage'
+    );
+    expect(obj.type).toEqual(5);
+    expect(obj.meta).toEqual({ method: 'getTags' });
 });
 
 test('bundleIfNeeded() - does not need to produce bundle', async () => {

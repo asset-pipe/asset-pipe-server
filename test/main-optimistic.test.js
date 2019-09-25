@@ -426,9 +426,12 @@ describe('publishing and bundling js feeds', () => {
         await post('/publish-assets').send(feed1);
         await server.close();
         expect(buff).toHaveLength(11);
-        expect(buff[0].toJSON()).toMatchSnapshot({
-            time: expect.any(Number),
-            timestamp: expect.any(Number),
-        });
+        const obj = buff[0].toJSON();
+        expect(obj.name).toEqual('asset_server_exists_in_storage_timer');
+        expect(obj.description).toEqual(
+            'Time taken for a check for existence operation from storage'
+        );
+        expect(obj.type).toEqual(5);
+        expect(obj.meta).toEqual({ method: 'hasFeed' });
     });
 });
