@@ -55,7 +55,7 @@ app.use((req, res) => {
             break;
         case 'html':
             res.status(404).send(
-                '<html><body><h1>Not found</h1></body></html>'
+                '<html><body><h1>Not found</h1></body></html>',
             );
             break;
         case 'text':

@@ -1,7 +1,7 @@
 'use strict';
 
-const Storage = require('../../lib/storage');
 const Sink = require('@asset-pipe/sink-mem');
+const Storage = require('../../lib/storage');
 
 beforeAll(() => jest.setTimeout(20000));
 
@@ -87,11 +87,11 @@ test('getInstructions()', async () => {
     const storage = new Storage(sink);
     await sink.set(
         '/instructions/js/tag1.json',
-        JSON.stringify({ data: ['tag1'] })
+        JSON.stringify({ data: ['tag1'] }),
     );
     await sink.set(
         '/instructions/js/tag2.json',
-        JSON.stringify({ data: ['tag1'] })
+        JSON.stringify({ data: ['tag1'] }),
     );
     await sink.set('/instructions/js/tag3.json', JSON.stringify({ data: [] }));
     const result = await storage.getInstructions('tag1', 'js');

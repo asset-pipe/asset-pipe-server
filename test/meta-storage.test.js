@@ -1,7 +1,7 @@
 'use strict';
 
-const MetaStorage = require('../lib/meta-storage');
 const SinkMem = require('@asset-pipe/sink-mem');
+const MetaStorage = require('../lib/meta-storage');
 
 test('constructor() - should take a sink', async () => {
     const sink = new SinkMem();
@@ -26,7 +26,7 @@ test('get() - should reject if missing entry', async () => {
         await storage.get('key');
     } catch (e) {
         expect(e).toEqual(
-            new Error('No file could be located with name "/meta/key.json".')
+            new Error('No file could be located with name "/meta/key.json".'),
         );
     }
 });
@@ -56,7 +56,7 @@ test('get() - should error if no payload', async () => {
         await storage.get('key');
     } catch (e) {
         expect(e).toEqual(
-            new Error('No file could be located with name "/meta/key.json".')
+            new Error('No file could be located with name "/meta/key.json".'),
         );
     }
 });
@@ -74,7 +74,7 @@ test('get() - should error if no result and no sink error', async () => {
         await storage.get('key');
     } catch (e) {
         expect(e).toEqual(
-            new Error(`Failed getting stored payload from key "key"`)
+            new Error(`Failed getting stored payload from key "key"`),
         );
     }
 });

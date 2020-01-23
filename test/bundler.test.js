@@ -9,7 +9,7 @@ test('bundleFeeds() throws error when bundling JS', async () => {
     try {
         await bundler.bundleFeeds(
             ['d1fg23d12gf3d.json', 'gfd123fd123fg123.json'],
-            'js'
+            'js',
         );
     } catch (err) {
         expect(err.message).toMatch(/Unable to bundle feeds as JS/);
@@ -26,7 +26,7 @@ test('bundleFeeds() throws error when bundling CSS', async () => {
     try {
         await bundler.bundleFeeds(
             ['d1fg23d12gf3d.json', 'gfd123fd123fg123.json'],
-            'css'
+            'css',
         );
     } catch (err) {
         expect(err.message).toMatch(/Unable to bundle feeds as CSS/);
@@ -47,7 +47,7 @@ test('upload() handles errors correctly', async () => {
         await bundler.upload(sinkStub, 'filename.js', 'file content');
     } catch (err) {
         expect(err.message).toMatch(
-            /Unable to upload file with name "filename.js"/
+            /Unable to upload file with name "filename.js"/,
         );
     }
 });

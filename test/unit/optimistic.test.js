@@ -1,7 +1,7 @@
 'use strict';
 
-const OptimisticBundler = require('../../lib/optimistic-bundler');
 const Sink = require('@asset-pipe/sink-mem');
+const OptimisticBundler = require('../../lib/optimistic-bundler');
 
 beforeAll(() => jest.setTimeout(20000));
 
@@ -66,7 +66,7 @@ test('bundle()', async () => {
         'tag',
         ['a', 'b', 'c'],
         ['hash1', 'hash2', 'hash3'],
-        'js'
+        'js',
     );
     expect(bundle).toMatchSnapshot();
 
@@ -77,7 +77,7 @@ test('bundle()', async () => {
     const obj = buff[0].toJSON();
     expect(obj.name).toEqual('asset_server_retrieve_from_storage_timer');
     expect(obj.description).toEqual(
-        'Time taken for a retrieve operation from storage'
+        'Time taken for a retrieve operation from storage',
     );
     expect(obj.type).toEqual(5);
     expect(obj.meta).toEqual({ method: 'getFeed' });
@@ -98,8 +98,8 @@ test('bundleIfNeeded() - produces new bundle', async () => {
 
     expect(
         await sink.get(
-            'e867367ae217ade7ab1acf25afbb04cf3f3ad88cba5022e3c63a328db2124194.js'
-        )
+            'e867367ae217ade7ab1acf25afbb04cf3f3ad88cba5022e3c63a328db2124194.js',
+        ),
     ).toMatchSnapshot();
 });
 
@@ -127,7 +127,7 @@ test('bundleIfNeeded() - produces metrics', async () => {
     const obj = buff[0].toJSON();
     expect(obj.name).toEqual('asset_server_retrieve_from_storage_timer');
     expect(obj.description).toEqual(
-        'Time taken for a retrieve operation from storage'
+        'Time taken for a retrieve operation from storage',
     );
     expect(obj.type).toEqual(5);
     expect(obj.meta).toEqual({ method: 'getTags' });
@@ -150,8 +150,8 @@ test('bundleIfNeeded() - does not need to produce bundle', async () => {
     await ob.bundleIfNeeded({ tag: 'tag', data: ['a', 'b', 'c'], type: 'js' });
     expect(
         await sink.get(
-            'e867367ae217ade7ab1acf25afbb04cf3f3ad88cba5022e3c63a328db2124194.js'
-        )
+            'e867367ae217ade7ab1acf25afbb04cf3f3ad88cba5022e3c63a328db2124194.js',
+        ),
     ).toBe('content was not replaced');
 });
 

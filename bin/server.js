@@ -1,9 +1,11 @@
 #!/usr/bin/env node
+
 'use strict';
 
+const bole = require('bole');
 const config = require('../config/config.js');
 const server = require('./app.js');
-const bole = require('bole');
+
 const log = bole('server');
 
 // Start application
@@ -17,7 +19,7 @@ server.listen(config.get('httpServerPort'), () => {
 process.on('uncaughtException', error => {
     log.error(
         error,
-        'shutdown - server taken down by force due to a uncaughtException'
+        'shutdown - server taken down by force due to a uncaughtException',
     );
     server.close();
     process.nextTick(() => {

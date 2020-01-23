@@ -1,11 +1,11 @@
 'use strict';
 
 const express = require('express');
-const Router = require('../lib/main');
 const supertest = require('supertest');
 const { hashArray } = require('@asset-pipe/common');
-const { hashContent } = require('../lib/hasher');
 const Sink = require('@asset-pipe/sink-mem');
+const { hashContent } = require('../lib/hasher');
+const Router = require('../lib/main');
 
 const mockMetaStorageSet = jest.fn().mockName('metaStorageSet');
 
@@ -20,7 +20,7 @@ jest.mock(
 
                 return mockMetaStorageSet(id, ...rest);
             }
-        }
+        },
 );
 
 function createTestServerFor(router) {
@@ -429,7 +429,7 @@ describe('publishing and bundling js feeds', () => {
         const obj = buff[0].toJSON();
         expect(obj.name).toEqual('asset_server_exists_in_storage_timer');
         expect(obj.description).toEqual(
-            'Time taken for a check for existence operation from storage'
+            'Time taken for a check for existence operation from storage',
         );
         expect(obj.type).toEqual(5);
         expect(obj.meta).toEqual({ method: 'hasFeed' });

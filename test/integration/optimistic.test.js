@@ -1,11 +1,13 @@
+/* eslint-disable prefer-destructuring */
+
 'use strict';
 
 const Sink = require('@asset-pipe/sink-mem');
 const express = require('express');
 const supertest = require('supertest');
+const { hashArray } = require('@asset-pipe/common');
 const Router = require('../../lib/main');
 const Bundler = require('../../lib/bundler');
-const { hashArray } = require('@asset-pipe/common');
 const { hashContent } = require('../../lib/hasher');
 const OptimisticBundler = require('../../lib/optimistic-bundler');
 
@@ -89,8 +91,8 @@ test('optimistic bundling of js feeds', async () => {
 
     expect(
         await sink.get(
-            'cad2b0041db74ac23e27c8c665ce0bca3750d66e18e9e5e15a6cd03e6b55b56d.js'
-        )
+            'cad2b0041db74ac23e27c8c665ce0bca3750d66e18e9e5e15a6cd03e6b55b56d.js',
+        ),
     ).toMatchSnapshot();
 });
 
@@ -112,8 +114,8 @@ test('publish instructions before publishing assets', async () => {
 
     expect(
         await sink.get(
-            'cad2b0041db74ac23e27c8c665ce0bca3750d66e18e9e5e15a6cd03e6b55b56d.js'
-        )
+            'cad2b0041db74ac23e27c8c665ce0bca3750d66e18e9e5e15a6cd03e6b55b56d.js',
+        ),
     ).toMatchSnapshot();
 });
 
@@ -135,8 +137,8 @@ test('optimistic bundling of css feeds', async () => {
 
     expect(
         await sink.get(
-            '4c718f870a0ffefb528244870f751b350e29362150c3e8cf681ad4ac6834aa05.css'
-        )
+            '4c718f870a0ffefb528244870f751b350e29362150c3e8cf681ad4ac6834aa05.css',
+        ),
     ).toMatchSnapshot();
 });
 
@@ -170,8 +172,8 @@ test('publish instructions before publishing muiltple assets', async () => {
 
     expect(
         await sink.get(
-            'dee1108e985a441997a0d4f14c0678b7a7b1145d5966e13c18bdd3b605beffc2.js'
-        )
+            'dee1108e985a441997a0d4f14c0678b7a7b1145d5966e13c18bdd3b605beffc2.js',
+        ),
     ).toMatchSnapshot();
 });
 
@@ -221,8 +223,8 @@ test('publish instructions updated', async () => {
 
     expect(
         await sink.get(
-            'cad2b0041db74ac23e27c8c665ce0bca3750d66e18e9e5e15a6cd03e6b55b56d.js'
-        )
+            'cad2b0041db74ac23e27c8c665ce0bca3750d66e18e9e5e15a6cd03e6b55b56d.js',
+        ),
     ).toMatchSnapshot();
 });
 
@@ -262,8 +264,8 @@ test('republishing same asset does not trigger a rebuild', async () => {
 
     expect(
         await sink.get(
-            'dee1108e985a441997a0d4f14c0678b7a7b1145d5966e13c18bdd3b605beffc2.js'
-        )
+            'dee1108e985a441997a0d4f14c0678b7a7b1145d5966e13c18bdd3b605beffc2.js',
+        ),
     ).toMatchSnapshot();
 });
 
@@ -297,8 +299,8 @@ test('republishing different asset triggers a rebuild', async () => {
 
     expect(
         await sink.get(
-            'dee1108e985a441997a0d4f14c0678b7a7b1145d5966e13c18bdd3b605beffc2.js'
-        )
+            'dee1108e985a441997a0d4f14c0678b7a7b1145d5966e13c18bdd3b605beffc2.js',
+        ),
     ).toMatchSnapshot();
 
     await optimisticBundler.publishAssets({
@@ -309,8 +311,8 @@ test('republishing different asset triggers a rebuild', async () => {
 
     expect(
         await sink.get(
-            '2ece5b23ba1649083ff871479c6d5ccd383c5e15d781a57abcfbc83051c53cec.js'
-        )
+            '2ece5b23ba1649083ff871479c6d5ccd383c5e15d781a57abcfbc83051c53cec.js',
+        ),
     ).toMatchSnapshot();
 });
 

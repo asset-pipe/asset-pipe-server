@@ -1,12 +1,14 @@
+/* eslint-disable prefer-destructuring */
+
 'use strict';
 
 const express = require('express');
 const SinkMem = require('@asset-pipe/sink-mem');
 const SinkFs = require('@asset-pipe/sink-fs');
-const Router = require('../lib/main');
 const supertest = require('supertest');
 const pretty = require('pretty');
 const { PassThrough } = require('readable-stream');
+const Router = require('../lib/main');
 
 const mockMetaStorageSet = jest.fn().mockName('metaStorageSet');
 
@@ -21,7 +23,7 @@ jest.mock(
 
                 return mockMetaStorageSet(id, ...rest);
             }
-        }
+        },
 );
 
 function createTestServerFor(router) {
@@ -204,7 +206,7 @@ describe('Router instance methods', () => {
         router.statusErrors()(err, req, res);
 
         expect(send).toHaveBeenCalledWith(
-            '<html><body><h1>foo</h1></body></html>'
+            '<html><body><h1>foo</h1></body></html>',
         );
     });
 
@@ -553,7 +555,7 @@ describe('bundling single js feed', () => {
 
         const eventPromise = new Promise(resolve => {
             router.once('request error', async (_, __, ___, ____, error) =>
-                resolve(error)
+                resolve(error),
             );
         });
 
@@ -566,7 +568,7 @@ describe('bundling single js feed', () => {
         ]);
 
         expect(errorEvent.message).toMatch(
-            /Unable to parse 1 or more feeds as JSON/
+            /Unable to parse 1 or more feeds as JSON/,
         );
         expect(errorEvent.isBoom).toBe(true);
     });
@@ -647,7 +649,7 @@ describe('bundling multiple js feeds', () => {
     test('/bundle/:file?minify=true', async () => {
         expect.assertions(4);
         const { text, headers } = await get(
-            `/bundle/${fileName}?minify=true`
+            `/bundle/${fileName}?minify=true`,
         ).expect(200);
         expect(headers['content-type']).toMatch(/application\/javascript/);
         expect(text).toMatchSnapshot();
