@@ -66,7 +66,7 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "test": "tap",
+    "test": "jest",
     "start": "node bin/server.js",
     "lint:format": "eslint --fix ."
   },

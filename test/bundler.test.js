@@ -108,6 +108,6 @@ describe('bundleInProcess', () => {
 
             expect(workerWithoutConfigWasEnded).toBe(true);
             expect(workerWithEmptyConfigWasEnded).toBe(true);
-        });
+        }, 10000);
     });
 });
