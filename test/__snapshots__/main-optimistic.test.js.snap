@@ -67,17 +67,10 @@ exports[`publishing and bundling js feeds publish assets with rebundle disabled 
 `;
 
 exports[`publishing and bundling js feeds publish assets with rebundle disabled 2`] = `
-SinkMem {
-  "_events": Object {},
-  "_eventsCount": 0,
-  "_maxListeners": undefined,
-  "db": Object {
-    "7e0df1c7f101f2c102fa132a939eedc09b131c8bd29dd6a4b9c1aeed43aba75f.js": "(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c=\\"function\\"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error(\\"Cannot find module '\\"+i+\\"'\\");throw a.code=\\"MODULE_NOT_FOUND\\",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u=\\"function\\"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({},{},[]);
+Object {
+  "7e0df1c7f101f2c102fa132a939eedc09b131c8bd29dd6a4b9c1aeed43aba75f.js": "(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c=\\"function\\"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error(\\"Cannot find module '\\"+i+\\"'\\");throw a.code=\\"MODULE_NOT_FOUND\\",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u=\\"function\\"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({},{},[]);
 ",
-    "7e0df1c7f101f2c102fa132a939eedc09b131c8bd29dd6a4b9c1aeed43aba75f.json": "[{\\"deps\\":{},\\"file\\":\\"my-module-1/main.js\\",\\"id\\":\\"1d32a8e1c6cf6e5885241f3ea5fee583560b2dfde38b21ec3f9781c91d58f42e\\",\\"name\\":\\"my-module-1\\",\\"source\\":\\"const i = 1;\\",\\"version\\":\\"1.0.1\\"}]",
-  },
-  "domain": null,
-  "name": "asset-pipe-sink-mem",
+  "7e0df1c7f101f2c102fa132a939eedc09b131c8bd29dd6a4b9c1aeed43aba75f.json": "[{\\"deps\\":{},\\"file\\":\\"my-module-1/main.js\\",\\"id\\":\\"1d32a8e1c6cf6e5885241f3ea5fee583560b2dfde38b21ec3f9781c91d58f42e\\",\\"name\\":\\"my-module-1\\",\\"source\\":\\"const i = 1;\\",\\"version\\":\\"1.0.1\\"}]",
 }
 `;
 

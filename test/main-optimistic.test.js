@@ -316,7 +316,7 @@ describe('publishing and bundling js feeds', () => {
         const { text } = await get(`/feed/${id}.js`);
         expect(text).toMatchSnapshot();
         sink.domain = null;
-        expect(sink).toMatchSnapshot();
+        expect(sink.db).toMatchSnapshot();
         await server.close();
     });
 
