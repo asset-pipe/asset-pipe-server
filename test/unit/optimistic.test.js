@@ -80,7 +80,8 @@ test('bundle()', async () => {
         'Time taken for a retrieve operation from storage',
     );
     expect(obj.type).toEqual(5);
-    expect(obj.meta).toEqual({ method: 'getFeed' });
+    expect(obj.labels).toEqual([{ name: 'method', value: 'getFeed' }]);
+    expect(obj.meta).toEqual({ buckets: [1, 5, 10, 15, 20, 30, 60, 120] });
 });
 
 test('bundleIfNeeded() - produces new bundle', async () => {
@@ -130,7 +131,8 @@ test('bundleIfNeeded() - produces metrics', async () => {
         'Time taken for a retrieve operation from storage',
     );
     expect(obj.type).toEqual(5);
-    expect(obj.meta).toEqual({ method: 'getTags' });
+    expect(obj.labels).toEqual([{ name: 'method', value: 'getTags' }]);
+    expect(obj.meta).toEqual({ buckets: [1, 5, 10, 15, 20, 30, 60, 120] });
 });
 
 test('bundleIfNeeded() - does not need to produce bundle', async () => {

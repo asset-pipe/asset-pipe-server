@@ -432,6 +432,6 @@ describe('publishing and bundling js feeds', () => {
             'Time taken for a check for existence operation from storage',
         );
         expect(obj.type).toEqual(5);
-        expect(obj.meta).toEqual({ method: 'hasFeed' });
+        expect(obj.meta.buckets).toEqual([1, 5, 10, 15, 20, 30, 60, 120]);
     });
 });
